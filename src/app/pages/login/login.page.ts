@@ -29,7 +29,12 @@ export class LoginPage implements OnInit {
     if (this.usuario == "admin" && this.contrasena == "123") {
       //alert("Login correcto");
       this.router.navigateByUrl('menu');
-    }else{
+    } else if ( this.usuario.includes('profesor') && this.contrasena == "123" ) {
+      this.router.navigateByUrl('menu-docente');
+    } else if ( this.usuario.includes('alumno') && this.contrasena == "123" ) {
+      this.router.navigateByUrl('menu-alumno');
+    }
+    else{
       alert("Usuario o contraseña incorrecta.")
     }
     
