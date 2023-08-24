@@ -30,7 +30,8 @@ const routes: Routes = [
   {
     path: 'asistencia',
     loadChildren: () => import('./pages/asistencia/asistencia.module').then( m => m.AsistenciaPageModule)
-  },  {
+  },
+  {
     path: 'ayuda-docente',
     loadChildren: () => import('./pages/ayuda-docente/ayuda-docente.module').then( m => m.AyudaDocentePageModule)
   },
@@ -41,7 +42,15 @@ const routes: Routes = [
   {
     path: 'qr-asistencia',
     loadChildren: () => import('./pages/qr-asistencia/qr-asistencia.module').then( m => m.QrAsistenciaPageModule)
+  },  {
+    path: 'cambiar-password',
+    loadChildren: () => import('./pages/cambiar-password/cambiar-password.module').then( m => m.CambiarPasswordPageModule)
   },
+  {
+    path: 'recuperar-password',
+    loadChildren: () => import('./pages/recuperar-password/recuperar-password.module').then( m => m.RecuperarPasswordPageModule)
+  },
+
 
 
 

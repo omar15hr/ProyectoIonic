@@ -14,9 +14,9 @@
     <ion-card-content>
       <ion-input [(ngModel)]="usuario" label="Usuario: "></ion-input>
       <ion-input [(ngModel)]="contrasena" type="password" label="Contraseña: "></ion-input>
-      <ion-button (click)="onLogin()" color="tertiary"  shape="round"><ion-icon slot="start" name="log-in-outline"></ion-icon> Iniciar Sesion </ion-button>
-      <ion-button (click)="onLogin()" color="tertiary"  shape="round"> Cambiar Contraseña </ion-button>
-      <ion-button (click)="onLogin()" color="tertiary"  shape="round"> Reestablecer Contraseña </ion-button>
+      <ion-button (click)="onLogin()" color="tertiary"  shape="round"><ion-icon slot="start" name="log-in-outline"></ion-icon> INGRESAR </ion-button>
+      <ion-button (click)="cambiarPassword()" color="tertiary"  shape="round"> Cambiar Contraseña </ion-button>
+      <ion-button (click)="recuperarPassword()" color="tertiary"  shape="round"> Reestablecer Contraseña </ion-button>
   </ion-card-content></div>
 
   </ion-card>

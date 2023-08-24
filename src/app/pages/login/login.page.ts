@@ -39,4 +39,12 @@ export class LoginPage implements OnInit {
     }
     
     }
+
+  cambiarPassword(){
+    this.router.navigateByUrl('cambiar-password');
+  }
+
+  recuperarPassword(){
+    this.router.navigateByUrl('recuperar-password');
+  }
 }
