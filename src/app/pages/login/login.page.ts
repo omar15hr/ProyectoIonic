@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HelperService } from 'src/app/services/helper.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginPage implements OnInit {
   usuario:string = "";
   contrasena:string = "";
 
-  constructor( private router:Router ) { }
+  constructor( private router:Router, private helper:HelperService ) { }
 
   ngOnInit() {
   }
@@ -20,11 +21,11 @@ export class LoginPage implements OnInit {
 
     // USUARIO NO INGRESA NINGUN DATO
     if (this.usuario == "") {
-      alert("Debe ingresar un usuario");
+      this.helper.showAlert( "Debe ingresar un usuario", "Error", "Campo obligatorio" )
       return;
     }
     if (this.contrasena == "") {
-      alert("Debe ingresar una contraseña");
+      this.helper.showAlert( "Debe ingresar una contraseña", "Error", "Campo obligatorio" )
       return;
     }
 
@@ -34,11 +35,11 @@ export class LoginPage implements OnInit {
       this.router.navigateByUrl('menu');
 
       // USUARIO INGRESA COMO PROFESOR
-    } else if ( this.usuario.includes('profesor') && this.contrasena == "123" ) {
+    } else if ( this.usuario.includes('@profesor') && this.contrasena == "123" ) {
       this.router.navigateByUrl('menu-docente');
 
     // USUARIO INGRESA COMO ALUMNO
-    } else if ( this.usuario.includes('alumno') && this.contrasena == "123" ) {
+    } else if ( this.usuario.includes('@alumno') && this.contrasena == "123" ) {
       this.router.navigateByUrl('menu-alumno');
 
     }

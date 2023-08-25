@@ -3,10 +3,6 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
@@ -42,7 +38,8 @@ const routes: Routes = [
   {
     path: 'qr-asistencia',
     loadChildren: () => import('./pages/qr-asistencia/qr-asistencia.module').then( m => m.QrAsistenciaPageModule)
-  },  {
+  },
+  {
     path: 'cambiar-password',
     loadChildren: () => import('./pages/cambiar-password/cambiar-password.module').then( m => m.CambiarPasswordPageModule)
   },
