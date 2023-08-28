@@ -35,28 +35,33 @@ export class LoginPage implements OnInit {
     // USUARIO INGRESA COMO ADMIN
     if (this.usuario == "admin" && this.contrasena == "123") {
       this.router.navigateByUrl('menu');
+      this.presentToast();
 
       // USUARIO INGRESA COMO PROFESOR
     } else if ( this.usuario.includes('@profesor') && this.contrasena == "123" ) {
       this.router.navigateByUrl('menu-docente');
+      this.presentToast();
 
     // USUARIO INGRESA COMO ALUMNO
     } else if ( this.usuario.includes('@alumno') && this.contrasena == "123" ) {
       this.router.navigateByUrl('menu-alumno');
+      this.presentToast();
 
     }
     // USUARIO INGRESA DATOS INCORRECTOS
     else{
-      alert("Usuario o contraseña incorrecta.")
+      this.helper.showAlert( "Usuario y/o contraseña no existen", "Error", "Datos ingresados no validos" )
+      return;
+      //alert("Usuario o contraseña incorrecta.")
     }
 
   }
 
 
 
-    // CAMBIO DE CONTRASEÑA
-  cambiarPassword(){
-    this.router.navigateByUrl('cambiar-password');
+    // REGISTRARSE
+    Registrarse(){
+    this.router.navigateByUrl('register');
   }
 
   // RECUPERAR CONTRASEÑA
