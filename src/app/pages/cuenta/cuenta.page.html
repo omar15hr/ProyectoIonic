@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Menu Alumno</ion-title>
+
+    <ion-button slot="end" class="ion-padding" routerLink="/login">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-button>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-list>
+
+    <ion-item routerLink="/asistencia">
+      <ion-icon name="key-outline" class="ion-padding" color="primary"></ion-icon>
+      <h3>Cambiar contraseña</h3>
+    </ion-item>
+
+    <ion-item routerLink="/ayuda-alumno">
+      <ion-icon name="notifications-outline" class="ion-padding" color="warning"></ion-icon>
+      <h3>Notificaciones</h3>
+    </ion-item>
+    
+    <ion-item routerLink="/ayuda-alumno">
+      <ion-icon name="person-circle-outline" class="ion-padding" color="success"></ion-icon>
+      <h3>Información del usuario</h3>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

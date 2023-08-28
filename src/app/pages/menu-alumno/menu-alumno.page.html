@@ -11,17 +11,20 @@
 
 <ion-content [fullscreen]="true">
 
-  <ion-list>
-
-    <ion-item routerLink="/asistencia">
-      <ion-icon name="book-outline" class="ion-padding" color="primary"></ion-icon>
-      <h3>Asistencia Virtual</h3>
-    </ion-item>
-
-    <ion-item routerLink="/ayuda-alumno">
-      <ion-icon name="alert-circle-outline" class="ion-padding" color="danger"></ion-icon>
-      <h3>Ayuda</h3>
-    </ion-item>
-  </ion-list>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+  
+      <ion-tab-button tab="menu-principal">
+        <ion-icon name="person-outline"></ion-icon>
+        <ion-label>Menu Principal</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="cuenta">
+        <ion-icon name="person-outline"></ion-icon>
+        <ion-label>Cuenta</ion-label>
+      </ion-tab-button>
+  
+    </ion-tab-bar>
+  </ion-tabs>
 
 </ion-content>

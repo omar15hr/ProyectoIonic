@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { HelperService } from 'src/app/services/helper.service';
 
 @Component({
@@ -12,7 +13,8 @@ export class LoginPage implements OnInit {
   usuario:string = "";
   contrasena:string = "";
 
-  constructor( private router:Router, private helper:HelperService ) { }
+
+  constructor( private router:Router, private helper:HelperService, private toastCtrl: ToastController ) { }
 
   ngOnInit() {
   }
@@ -61,6 +63,27 @@ export class LoginPage implements OnInit {
   recuperarPassword(){
     this.router.navigateByUrl('recuperar-password');
   }
+
+
+  async presentToast() {
+    const toast = await this.toastCtrl.create({
+      message: 'Sesión iniciada correctamente.',
+      duration: 2000
+    });
+    toast.present();
+  }
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 

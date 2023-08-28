@@ -7,5 +7,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-card>
+    <ion-card-header class="card-qr">
+      <ion-card-title>Escanea el QR de asistencia</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Al escanear el QR podras quedar asistente en la clase. Recordamos que solo podras ingresar 1 vez por dia en cada clase.
+    </ion-card-content>
+    <ion-button expand="block" class="ion-padding">
+      Escanear
+    </ion-button>
+  </ion-card>
+
 </ion-content>

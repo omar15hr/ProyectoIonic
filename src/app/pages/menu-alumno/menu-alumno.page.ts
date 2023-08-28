@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Animation, AnimationController, IonItem } from '@ionic/angular';
+import { Animation, AnimationController, IonItem, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-menu-alumno',

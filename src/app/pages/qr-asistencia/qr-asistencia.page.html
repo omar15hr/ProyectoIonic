@@ -7,5 +7,22 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-card>
+    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+    <ion-card-header class="card-qr">
+
+    <ion-card-title>QR de asistencia</ion-card-title>
+
+    </ion-card-header>
+    <ion-card-content>
+      Solo podras generar el QR 1 vez por dia en cada clase.
+    </ion-card-content>
+    <ion-button expand="block" class="ion-padding">
+      Volver a generar
+    </ion-button>
+  </ion-card>
+
+
 </ion-content>

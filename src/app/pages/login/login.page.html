@@ -5,19 +5,43 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
   <ion-card>
     <ion-card-header>
       <ion-card-title>Inicio de Sesion</ion-card-title>
       <ion-card-subtitle></ion-card-subtitle>
     </ion-card-header>
+
+
   <div class="container">
     <ion-card-content>
       <ion-input [(ngModel)]="usuario" label="Usuario: "></ion-input>
-      <ion-input [(ngModel)]="contrasena" type="password" label="Contraseña: "></ion-input>
-      <ion-button (click)="onLogin()" color="tertiary"  shape="round"><ion-icon slot="start" name="log-in-outline"></ion-icon> INGRESAR </ion-button>
-      <ion-button (click)="cambiarPassword()" color="tertiary"  shape="round"> Cambiar Contraseña </ion-button>
-      <ion-button (click)="recuperarPassword()" color="tertiary"  shape="round"> Reestablecer Contraseña </ion-button>
-  </ion-card-content></div>
+
+      <ion-input 
+        [(ngModel)]="contrasena" 
+        type="password" 
+        label="Contraseña: "
+      >
+      </ion-input>
+
+      <ion-button 
+        (click)="onLogin()" 
+        (click)="presentToast()" 
+        color="tertiary" 
+        shape="round"
+        class="ion-padding"
+      ><ion-icon slot="start" name="log-in-outline"></ion-icon> 
+        Ingresar 
+      </ion-button>
+      
+      <ion-button 
+        (click)="recuperarPassword()" 
+        color="tertiary" 
+        shape="round"
+        class="ion-padding"
+      > Reestablecer Contraseña </ion-button>
+  </ion-card-content>
+</div>
 
   </ion-card>
 </ion-content>
