@@ -38,7 +38,15 @@ const routes: Routes = [
   {
     path: 'visualizar',
     loadChildren: () => import('./pages/visualizar/visualizar.module').then( m => m.VisualizarPageModule)
+  },  {
+    path: 'modal',
+    loadChildren: () => import('./pages/modal/modal.module').then( m => m.ModalPageModule)
   },
+  {
+    path: 'prev-visualizacion',
+    loadChildren: () => import('./pages/prev-visualizacion/prev-visualizacion.module').then( m => m.PrevVisualizacionPageModule)
+  },
+
 
 
 
