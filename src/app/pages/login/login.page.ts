@@ -32,19 +32,9 @@ export class LoginPage implements OnInit {
     }
 
 
-    // USUARIO INGRESA COMO ADMIN
-    if (this.usuario == "admin" && this.contrasena == "123") {
-      this.router.navigateByUrl('menu');
-      this.presentToast();
-
-      // USUARIO INGRESA COMO PROFESOR
-    } else if ( this.usuario.includes('@profesor') && this.contrasena == "123" ) {
-      this.router.navigateByUrl('menu-docente');
-      this.presentToast();
-
-    // USUARIO INGRESA COMO ALUMNO
-    } else if ( this.usuario.includes('@alumno') && this.contrasena == "123" ) {
-      this.router.navigateByUrl('menu-alumno');
+    // USUARIO INGRESA
+    if ( this.usuario.includes('@alumno') && this.contrasena == "123" ) {
+      this.router.navigateByUrl('menu-principal');
       this.presentToast();
 
     }
