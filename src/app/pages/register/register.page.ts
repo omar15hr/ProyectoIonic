@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HelperService } from 'src/app/services/helper.service';
 
 @Component({
   selector: 'app-register',
@@ -8,18 +9,55 @@ import { Router } from '@angular/router';
 })
 export class RegisterPage implements OnInit {
 
-  usuario:string = "";
+  nombre:string = "";
+  apellido:string = "";
   contrasena:string = "";
+  contrasena2:string = "";
   email:string = "";
-  sala:string = "";
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private helper:HelperService) { }
 
   ngOnInit() {
   }
 
   Registrarse(){
-    this.router.navigateByUrl('login');
+    // USUARIO NO INGRESA NINGUN DATO
+    if (this.nombre == "") {
+      this.helper.showAlert( "Debe ingresar un nombre", "Error", "Campo obligatorio" )
+      return;
+    }
+
+    if (this.apellido == "") {
+      this.helper.showAlert( "Debe ingresar un apellido", "Error", "Campo obligatorio" )
+      return;
+    }
+
+    if (this.email == "") {
+      this.helper.showAlert( "Debe ingresar un email", "Error", "Campo obligatorio" )
+      return;
+    }
+
+    if (this.contrasena == "") {
+      this.helper.showAlert( "Debe ingresar una contraseña", "Error", "Campo obligatorio" )
+      return;
+    }
+
+    if (this.contrasena2 == "") {
+      this.helper.showAlert( "Debe volver a ingresar su contraseña", "Error", "Campo obligatorio" )
+      return;
+    }
+
+    if (this.contrasena != this.contrasena2) {
+      this.helper.showAlert( "Las contraseñas no coinciden, vuelva a intentarlo", "Error", "Campos no coinciden" )
+      return;
+    }
+
+    else{
+      this.router.navigateByUrl('login');
+    }
+    
   }
+
+    
 
 }

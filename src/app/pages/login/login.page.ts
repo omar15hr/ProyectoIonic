@@ -13,7 +13,6 @@ export class LoginPage implements OnInit {
   usuario:string = "";
   contrasena:string = "";
 
-
   constructor( private router:Router, private helper:HelperService, private toastCtrl: ToastController ) { }
 
   ngOnInit() {
@@ -31,13 +30,12 @@ export class LoginPage implements OnInit {
       return;
     }
 
-
     // USUARIO INGRESA
-    if ( this.usuario.includes('@alumno') && this.contrasena == "123" ) {
+    if ( this.usuario == "pgy4121001" && this.contrasena == "pgy4121001" ) {
       this.router.navigateByUrl('menu-principal');
       this.presentToast();
-
     }
+
     // USUARIO INGRESA DATOS INCORRECTOS
     else{
       this.helper.showAlert( "Usuario y/o contraseña no existen", "Error", "Datos ingresados no validos" )
@@ -46,8 +44,6 @@ export class LoginPage implements OnInit {
     }
 
   }
-
-
 
     // REGISTRARSE
     Registrarse(){
@@ -58,7 +54,6 @@ export class LoginPage implements OnInit {
   recuperarPassword(){
     this.router.navigateByUrl('recuperar-password');
   }
-
 
   async presentToast() {
     const toast = await this.toastCtrl.create({

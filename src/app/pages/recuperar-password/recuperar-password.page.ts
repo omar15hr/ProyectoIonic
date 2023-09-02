@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HelperService } from 'src/app/services/helper.service';
 
 @Component({
   selector: 'app-recuperar-password',
@@ -10,12 +11,20 @@ export class RecuperarPasswordPage implements OnInit {
 
   correo:string = "";
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private helper:HelperService) { }
 
   ngOnInit() {
   }
 
-  reestablecerPassword(){
-    this.router.navigateByUrl('login');
+  recuperarPassword(){
+    if (this.correo == "") {
+      this.helper.showAlert( "Debe ingresar un correo", "Error", "Campo obligatorio" )
+      return;
+    }
+
+    else{
+      this.router.navigateByUrl('login');
+    }
+    
   }
 }

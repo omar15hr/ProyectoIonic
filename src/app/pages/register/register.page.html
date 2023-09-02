@@ -18,12 +18,11 @@
 
   <div class="container">
     <ion-card-content>
-      <ion-input [(ngModel)]="usuario" label="Usuario: "></ion-input>
+      <ion-input [(ngModel)]="nombre" label="Nombre: "></ion-input>
 
       <ion-input 
-        [(ngModel)]="contrasena" 
-        type="password" 
-        label="Contraseña: "
+        [(ngModel)]="apellido"
+        label="Apellido: "
       >
       </ion-input>
 
@@ -35,8 +34,16 @@
       </ion-input>
 
       <ion-input 
-        [(ngModel)]="sala"
-        label="Sala: "
+        [(ngModel)]="contrasena" 
+        type="password" 
+        label="Contraseña: "
+      >
+      </ion-input>
+
+      <ion-input 
+        [(ngModel)]="contrasena2" 
+        type="password" 
+        label="Confirmar Contraseña: "
       >
       </ion-input>
 
