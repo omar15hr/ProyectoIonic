@@ -24,7 +24,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/recuperar-password/recuperar-password.module').then( m => m.RecuperarPasswordPageModule)
   },
   {
-    path: 'menu-principal',
+    path: 'menu-principal/:idCuenta',
     loadChildren: () => import('./pages/menu-principal/menu-principal.module').then( m => m.MenuPrincipalPageModule)
   },
   {
@@ -38,7 +38,8 @@ const routes: Routes = [
   {
     path: 'visualizar',
     loadChildren: () => import('./pages/visualizar/visualizar.module').then( m => m.VisualizarPageModule)
-  },  {
+  },
+  {
     path: 'modal',
     loadChildren: () => import('./pages/modal/modal.module').then( m => m.ModalPageModule)
   },

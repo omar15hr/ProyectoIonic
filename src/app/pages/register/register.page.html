@@ -18,11 +18,12 @@
 
   <div class="container">
     <ion-card-content>
-      <ion-input [(ngModel)]="nombre" label="Nombre: "></ion-input>
+      <ion-input [(ngModel)]="nombre" label="Nombre: " labelPlacement="floating"></ion-input>
 
       <ion-input 
         [(ngModel)]="apellido"
         label="Apellido: "
+        labelPlacement="floating"
       >
       </ion-input>
 
@@ -30,6 +31,7 @@
         [(ngModel)]="email"
         type="email"
         label="Email: "
+        labelPlacement="floating"
       >
       </ion-input>
 
@@ -37,6 +39,7 @@
         [(ngModel)]="contrasena" 
         type="password" 
         label="Contraseña: "
+        labelPlacement="floating"
       >
       </ion-input>
 
@@ -44,6 +47,7 @@
         [(ngModel)]="contrasena2" 
         type="password" 
         label="Confirmar Contraseña: "
+        labelPlacement="floating"
       >
       </ion-input>
 

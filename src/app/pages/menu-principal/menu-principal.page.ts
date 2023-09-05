@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Menu } from 'src/app/models/menu';
 
 @Component({
@@ -8,10 +9,13 @@ import { Menu } from 'src/app/models/menu';
 })
 export class MenuPrincipalPage implements OnInit {
 
-  constructor() { }
+  parametroIdCuenta: string | undefined;
+
+  constructor(private activatedRoute:ActivatedRoute) {}
 
   ngOnInit() {
     setTimeout(() => { this.loaded = true; }, 2000);
+    this.parametroIdCuenta = this.activatedRoute.snapshot.params['idCuenta'];
   }
   public loaded = false;
 
