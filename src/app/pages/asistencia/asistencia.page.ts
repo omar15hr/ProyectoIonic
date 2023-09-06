@@ -42,6 +42,7 @@ export class AsistenciaPage implements OnInit {
     const { data } = await modal.onDidDismiss();
   }
 
+<<<<<<< HEAD
   @ViewChild(IonCard, { read: ElementRef })
   card!: ElementRef<HTMLIonCardElement>;
 
@@ -69,4 +70,8 @@ export class AsistenciaPage implements OnInit {
       this.animation.stop();
     }
   }
+=======
+  
+
+>>>>>>> 41e42de9fc67ffe1516a7945a65fe2a23f571b54
 }
