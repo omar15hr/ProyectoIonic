@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { LoadingController, ModalController } from '@ionic/angular';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AnimationController, Animation, IonCard, LoadingController, ModalController } from '@ionic/angular';
 import { ModalPage } from '../modal/modal.page';
 
 
@@ -10,7 +10,11 @@ import { ModalPage } from '../modal/modal.page';
 })
 export class AsistenciaPage implements OnInit {
 
-  constructor( private loadingCtrl: LoadingController, private modalCtrl: ModalController ) { }
+  constructor( 
+      private loadingCtrl: LoadingController, 
+      private modalCtrl: ModalController,
+      private animationCtrl: AnimationController
+    ) { }
 
   ngOnInit() {
     this.showLoading();
@@ -38,4 +42,31 @@ export class AsistenciaPage implements OnInit {
     const { data } = await modal.onDidDismiss();
   }
 
+  @ViewChild(IonCard, { read: ElementRef })
+  card!: ElementRef<HTMLIonCardElement>;
+
+  private animation!: Animation;
+
+  //Animacion
+  ngAfterViewInit() {
+    this.animation = this.animationCtrl
+      .create()
+      .addElement(document.querySelectorAll('ion-button'))
+      .duration(1500)
+      .iterations(Infinity)
+      .fromTo('transform', 'translateX(0px)', 'translateX(100px)')
+      .fromTo('opacity', '1', '0.2');
+  }
+
+  play(){
+    if (this.animation) {
+      this.animation.play();
+    }
+  }
+
+  stop(){
+    if (this.animation) {
+      this.animation.stop();
+    }
+  }
 }

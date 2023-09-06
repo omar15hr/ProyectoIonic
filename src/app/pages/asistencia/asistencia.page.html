@@ -19,9 +19,12 @@
     <ion-button expand="block" class="ion-padding">
       Escanear
     </ion-button>
-    <ion-button (click)="mostrarPrev()" expand="block" class="ion-padding">
+    <ion-button id="animation-button" (click)="mostrarPrev()" expand="block" class="ion-padding">
       Prueba prev
     </ion-button>
+
+    <ion-button (click)="play()">Play</ion-button>
+    <ion-button (click)="stop()">Stop</ion-button>
   </ion-card>
 
 </ion-content>
