@@ -15,13 +15,22 @@
 
   <div class="container">
     <ion-card-content>
-      <ion-input [(ngModel)]="usuario" label="Usuario: " labelPlacement="floating"></ion-input>
+      <ion-input 
+        [(ngModel)]="usuario" 
+        label="Usuario: " 
+        labelPlacement="floating" 
+        fill="outline"
+        >
+      </ion-input>
+
+      <br>
 
       <ion-input 
         [(ngModel)]="contrasena" 
         type="password" 
         label="Contraseña: "
         labelPlacement="floating"
+        fill="outline"
       >
       </ion-input>
 

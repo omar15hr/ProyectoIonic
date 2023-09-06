@@ -31,7 +31,7 @@ export class LoginPage implements OnInit {
     }
 
     // USUARIO INGRESA
-    if ( this.usuario == "pgy4121001" && this.contrasena == "pgy4121001" ) {
+    if ( this.usuario == "pgy4121-001d" && this.contrasena == "pgy4121-001d" ) {
       var idCuenta = this.usuario;
       this.router.navigateByUrl('menu-principal/' + idCuenta);
       this.presentToast();
