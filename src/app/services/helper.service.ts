@@ -15,11 +15,7 @@ export class HelperService {
     return alert;
   }
 
-<<<<<<< HEAD
-  async showConfirm( msg:string, btn_si:string, btn_no:string ){
-=======
   async showConfirm(msg:string,btn_si:string,btn_no:string){
->>>>>>> 41e42de9fc67ffe1516a7945a65fe2a23f571b54
     let promise = new Promise<boolean>(async (resolve) =>{
       var alert = await this.alertService.create({cssClass:"", message:msg,buttons:
       [
@@ -34,11 +30,7 @@ export class HelperService {
           handler:() =>{
             resolve(false);
           }
-<<<<<<< HEAD
-      }
-=======
        }
->>>>>>> 41e42de9fc67ffe1516a7945a65fe2a23f571b54
     ]
     });
     await alert.present();
