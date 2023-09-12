@@ -18,6 +18,7 @@ export class AsistenciaPage implements OnInit {
 
   ngOnInit() {
     this.showLoading();
+      
   }
 
   async showLoading() {
@@ -51,22 +52,18 @@ export class AsistenciaPage implements OnInit {
   ngAfterViewInit() {
     this.animation = this.animationCtrl
       .create()
-      .addElement(document.querySelectorAll('ion-button'))
+      .addElement(document.querySelectorAll('ion-icon'))
       .duration(1500)
       .iterations(Infinity)
       .fromTo('transform', 'translateX(0px)', 'translateX(100px)')
       .fromTo('opacity', '1', '0.2');
+    this.animation.play();
+    // this.animationAsistencia.stop();
   }
+  
 
-  play(){
-    if (this.animation) {
-      this.animation.play();
-    }
-  }
 
-  stop(){
-    if (this.animation) {
-      this.animation.stop();
-    }
-  }
+
+
+
 }
