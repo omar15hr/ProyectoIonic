@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { HelperService } from 'src/app/services/helper.service';
+import { StorageService } from '../../services/storage.service';
 
 @Component({
   selector: 'app-register',
@@ -15,49 +17,48 @@ export class RegisterPage implements OnInit {
   contrasena2:string = "";
   email:string = "";
 
-  constructor(private router:Router, private helper:HelperService) { }
+  constructor( 
+    private router:Router, 
+    private helper:HelperService,
+    private auth:AngularFireAuth,
+    private storage:StorageService
+    ) { }
 
   ngOnInit() {
   }
 
-  Registrarse(){
-    // USUARIO NO INGRESA NINGUN DATO
-    if (this.nombre == "") {
-      this.helper.showAlert( "Debe ingresar un nombre", "Error", "Campo obligatorio" )
-      return;
-    }
 
-    if (this.apellido == "") {
-      this.helper.showAlert( "Debe ingresar un apellido", "Error", "Campo obligatorio" )
-      return;
-    }
+  // Funcion para registrar al usuario con correo y contraseña
+  async registro(){
 
-    if (this.email == "") {
-      this.helper.showAlert( "Debe ingresar un email", "Error", "Campo obligatorio" )
-      return;
-    }
 
-    if (this.contrasena == "") {
-      this.helper.showAlert( "Debe ingresar una contraseña", "Error", "Campo obligatorio" )
-      return;
-    }
+    // Objeto usuario
+    let user = 
+    [
+      {
+        correo: this.email,
+        contrasena: this.contrasena
+      }
+    ]
 
-    if (this.contrasena2 == "") {
-      this.helper.showAlert( "Debe volver a ingresar su contraseña", "Error", "Campo obligatorio" )
-      return;
-    }
+    try {
+    const request = await this.auth.createUserWithEmailAndPassword( this.email, this.contrasena );
+    this.storage.guardarUsuario( user );
 
-    if (this.contrasena != this.contrasena2) {
-      this.helper.showAlert( "Las contraseñas no coinciden, vuelva a intentarlo", "Error", "Campos no coinciden" )
-      return;
-    }
-
-    else{
-      this.router.navigateByUrl('login');
-    }
+    await this.router.navigateByUrl('login');
+    // await loader.dismiss(); 
+    await this.helper.showAlert("Usuario registrado correctamente","Información","Registrado");  
+    } catch (error:any) {
+      if (error.code == 'auth/email-already-in-use') {
+        // await loader.dismiss();
+        await this.helper.showAlert("El correo ya se encuentra registrado.","Error","No Registrado");
+      }
+      if (error.code == 'auth/invalid-email') {
+        // await loader.dismiss();
+        await this.helper.showAlert("El correo no es el correcto.","Error","No Registrado");
+      }
+    }    
     
   }
-
-    
 
 }
