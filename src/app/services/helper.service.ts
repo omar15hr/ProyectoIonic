@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HelperService {
 
-  constructor( private alertService: AlertController ) { }
+  constructor( private alertService: AlertController, private loadingController:LoadingController ) { }
 
 
   async showAlert( msg:string, title:string, subTitle:string ){
@@ -37,5 +37,17 @@ export class HelperService {
   })
   return promise;
 }
+
+async showLoader(msg:string){
+  var loader = await this.loadingController.create(
+    {
+      cssClass:"loaderClass",
+      message:msg,
+      translucent:true
+    }
+    );
+    await loader.present();
+    return loader;
+  }
 
 }

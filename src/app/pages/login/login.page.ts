@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { HelperService } from 'src/app/services/helper.service';
@@ -13,35 +14,49 @@ export class LoginPage implements OnInit {
   usuario:string = "";
   contrasena:string = "";
 
-  constructor( private router:Router, private helper:HelperService, private toastCtrl: ToastController ) { }
+  constructor( 
+    private router:Router, 
+    private helper:HelperService, 
+    private toastCtrl: ToastController,
+    private auth:AngularFireAuth
+  ) { }
 
   ngOnInit() {
   }
 
-  onLogin() {
+  async onLogin() {
+
+    const loader = await this.helper.showLoader("Cargando");
 
     // USUARIO NO INGRESA NINGUN DATO
     if (this.usuario == "") {
+      await loader.dismiss();
       this.helper.showAlert( "Debe ingresar un usuario", "Error", "Campo obligatorio" )
       return;
     }
     if (this.contrasena == "") {
+      await loader.dismiss();
       this.helper.showAlert( "Debe ingresar una contraseña", "Error", "Campo obligatorio" )
       return;
     }
-
-    // USUARIO INGRESA
-    if ( this.usuario == "pgy4121-001d" && this.contrasena == "pgy4121-001d" ) {
+    
+    // USUARIO INGRESA CON DATOS CORRECTOS
+    try {
+      await this.auth.signInWithEmailAndPassword(this.usuario,this.contrasena);
+      await loader.dismiss();
       var idCuenta = this.usuario;
       this.router.navigateByUrl('menu-principal/' + idCuenta);
-      this.presentToast();
-    }
 
-    // USUARIO INGRESA DATOS INCORRECTOS
-    else{
-      this.helper.showAlert( "Usuario y/o contraseña no existen", "Error", "Datos ingresados no validos" )
-      return;
-      //alert("Usuario o contraseña incorrecta.")
+      // USUARIO INGRESA CON CORREO INVALIDO O CONTRASEÑA MUY CORTA
+    } catch (error:any) {
+      if (error.code == 'auth/invalid-email' || error.code == 'auth/user-not-found' ) {
+        await loader.dismiss();
+        await this.helper.showAlert("El correo no es el correcto.","Error","No pudo ingresar");
+      }
+      if (error.code == 'auth/weak-password') {
+        await loader.dismiss();
+        await this.helper.showAlert("El largo de la contraseña es muy corto.","Error","No pudo ingresar");
+      }
     }
 
   }
