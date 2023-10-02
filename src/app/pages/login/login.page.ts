@@ -42,7 +42,8 @@ export class LoginPage implements OnInit {
     
     // USUARIO INGRESA CON DATOS CORRECTOS
     try {
-      await this.auth.signInWithEmailAndPassword(this.usuario,this.contrasena);
+      const req = await this.auth.signInWithEmailAndPassword(this.usuario,this.contrasena);
+
       await loader.dismiss();
       var idCuenta = this.usuario;
       this.router.navigateByUrl('menu-principal/' + idCuenta);

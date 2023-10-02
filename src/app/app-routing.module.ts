@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+import { AngularFireAuthGuard, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard';
+
+const redireccionLogin = () => redirectUnauthorizedTo(['/login']);
+
 const routes: Routes = [
   {
     path: '',
@@ -12,6 +16,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
+    canActivate:[ AngularFireAuthGuard ],
+    data:{ authGuardPipe: redireccionLogin },
     path: 'asistencia',
     loadChildren: () => import('./pages/asistencia/asistencia.module').then( m => m.AsistenciaPageModule)
   },
@@ -24,10 +30,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/recuperar-password/recuperar-password.module').then( m => m.RecuperarPasswordPageModule)
   },
   {
-    path: 'menu-principal/:idCuenta',
+    canActivate:[ AngularFireAuthGuard ],
+    data:{ authGuardPipe: redireccionLogin },
+    path: 'menu-principal',
     loadChildren: () => import('./pages/menu-principal/menu-principal.module').then( m => m.MenuPrincipalPageModule)
   },
   {
+    canActivate:[ AngularFireAuthGuard ],
+    data:{ authGuardPipe: redireccionLogin },
     path: 'cuenta',
     loadChildren: () => import('./pages/cuenta/cuenta.module').then( m => m.CuentaPageModule)
   },
@@ -36,14 +46,20 @@ const routes: Routes = [
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   },
   {
+    canActivate:[ AngularFireAuthGuard ],
+    data:{ authGuardPipe: redireccionLogin },
     path: 'visualizar',
     loadChildren: () => import('./pages/visualizar/visualizar.module').then( m => m.VisualizarPageModule)
   },
   {
+    canActivate:[ AngularFireAuthGuard ],
+    data:{ authGuardPipe: redireccionLogin },
     path: 'modal',
     loadChildren: () => import('./pages/modal/modal.module').then( m => m.ModalPageModule)
   },
   {
+    canActivate:[ AngularFireAuthGuard ],
+    data:{ authGuardPipe: redireccionLogin },
     path: 'prev-visualizacion',
     loadChildren: () => import('./pages/prev-visualizacion/prev-visualizacion.module').then( m => m.PrevVisualizacionPageModule)
   },
