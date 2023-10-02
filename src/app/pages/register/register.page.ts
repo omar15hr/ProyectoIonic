@@ -4,6 +4,11 @@ import { Router } from '@angular/router';
 import { HelperService } from 'src/app/services/helper.service';
 import { StorageService } from '../../services/storage.service';
 
+
+import { Comuna } from 'src/app/models/comuna';
+import { Region } from 'src/app/models/region';
+import { LocationService } from 'src/app/services/location.service';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -17,15 +22,39 @@ export class RegisterPage implements OnInit {
   contrasena2:string = "";
   email:string = "";
 
+  regiones:Region[]=[];
+  comunas:Comuna[]=[];
+  regionSel:number = 0;
+  comunaSel:number = 0;
+
+  disabledComuna:boolean = true;
+
   constructor( 
     private router:Router, 
     private helper:HelperService,
     private auth:AngularFireAuth,
-    private storage:StorageService
+    private storage:StorageService,
+    private locationService:LocationService
     ) { }
 
   ngOnInit() {
+    this.cargarRegion();
   }
+
+  //Funcion para cargar la region
+  async cargarRegion(){
+    const req = await this.locationService.getRegion();
+    this.regiones = req.data;
+    
+    console.log("REGIONES",this.regiones);
+  };
+
+  //Funcion para cargar la comuna
+  async cargarComuna(){
+    const req = await this.locationService.getComuna(this.regionSel);
+    this.comunas = req.data;
+    this.disabledComuna = false;
+  };
 
 
   // Funcion para registrar al usuario con correo y contraseña

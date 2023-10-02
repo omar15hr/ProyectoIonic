@@ -12,7 +12,8 @@ export const environment = {
     storageBucket: "pgy4121-001d.appspot.com",
     messagingSenderId: "803987788519",
     appId: "1:803987788519:web:bd5e9a2496d75f4cf60842"
-  }
+  },
+  apiUrl:"https://dev.matiivilla.cl/duoc/location/"
 };
 
 /*export const environment = {
