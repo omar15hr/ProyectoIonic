@@ -61,6 +61,9 @@ export class AsistenciaPage implements OnInit {
     // this.animationAsistencia.stop();
   }
   
+  ionViewWillLeave(){
+    this.animation.stop();   
+  }
 
 
 
