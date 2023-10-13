@@ -1,6 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AnimationController, Animation, IonCard, LoadingController, ModalController } from '@ionic/angular';
 import { ModalPage } from '../modal/modal.page';
+import { BarcodeScanner } from 'capacitor-barcode-scanner';
+import { HelperService } from 'src/app/services/helper.service';
+import { ConfirmarQrPage } from 'src/app/modals/confirmar-qr/confirmar-qr.page';
 
 
 @Component({
@@ -13,7 +16,8 @@ export class AsistenciaPage implements OnInit {
   constructor( 
       private loadingCtrl: LoadingController, 
       private modalCtrl: ModalController,
-      private animationCtrl: AnimationController
+      private animationCtrl: AnimationController,
+      private helper: HelperService
     ) { }
 
   ngOnInit() {
@@ -60,13 +64,14 @@ export class AsistenciaPage implements OnInit {
     this.animation.play();
     // this.animationAsistencia.stop();
   }
-  
+
   ionViewWillLeave(){
-    this.animation.stop();   
+    this.animation.stop();
   }
 
+  async scan() {
+    let resultadoQr = ((await BarcodeScanner.scan()).code)
 
-
-
-
+    this.helper.showModal(ConfirmarQrPage)
+  }
 }

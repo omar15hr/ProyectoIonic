@@ -16,7 +16,7 @@
     <ion-card-content>
       Al escanear el QR podras quedar asistente en la clase. Recordamos que solo podras ingresar 1 vez por dia en cada clase.
     </ion-card-content>
-    <ion-button expand="block" class="ion-padding">
+    <ion-button (click)="scan()" expand="block" class="ion-padding">
       Escanear
     </ion-button>
     <ion-button id="animation-button" (click)="mostrarPrev()" expand="block" class="ion-padding">

@@ -54,7 +54,6 @@ export class MenuPrincipalPage implements OnInit {
   public loaded = false;
 
   async logout(){
-    
     var confirm = await this.helper.showConfirm("Desea cerrar la sesión actual?","Confirmar","Cancelar");
     if(confirm == true ) {
       this.router.navigateByUrl("login");
