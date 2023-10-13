@@ -62,7 +62,11 @@ const routes: Routes = [
     data:{ authGuardPipe: redireccionLogin },
     path: 'prev-visualizacion',
     loadChildren: () => import('./pages/prev-visualizacion/prev-visualizacion.module').then( m => m.PrevVisualizacionPageModule)
+  },  {
+    path: 'perfil-usuario',
+    loadChildren: () => import('./pages/perfil-usuario/perfil-usuario.module').then( m => m.PerfilUsuarioPageModule)
   },
+
 
 
 

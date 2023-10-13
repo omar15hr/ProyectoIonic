@@ -17,10 +17,9 @@ export class LoginPage implements OnInit {
 
   constructor( 
     private router:Router, 
-    private helper:HelperService, 
-    private toastCtrl: ToastController,
+    private helper:HelperService,
     private auth:AngularFireAuth,
-    private storage:StorageService
+    private storage:StorageService,
   ) { }
 
   ngOnInit() {
@@ -76,30 +75,4 @@ export class LoginPage implements OnInit {
   recuperarPassword(){
     this.router.navigateByUrl('recuperar-password');
   }
-
-  async presentToast() {
-    const toast = await this.toastCtrl.create({
-      message: 'Sesión iniciada correctamente.',
-      duration: 2000
-    });
-    toast.present();
-  }
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
-
-
