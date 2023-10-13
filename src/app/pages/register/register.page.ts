@@ -21,7 +21,6 @@ export class RegisterPage implements OnInit {
   contrasena:string = "";
   contrasena2:string = "";
   email:string = "";
-
   regiones:Region[]=[];
   comunas:Comuna[]=[];
   regionSel:number = 0;
@@ -70,7 +69,12 @@ export class RegisterPage implements OnInit {
     [
       {
         correo: this.email,
-        contrasena: this.contrasena
+        apellido: this.apellido,
+        email: this.email,
+        contrasena: this.contrasena,
+        contrasena2: this.contrasena2,
+        regionSel: this.regionSel,
+        comunaSel: this.comunaSel
       }
     ]
 
