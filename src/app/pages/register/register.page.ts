@@ -71,7 +71,6 @@ export class RegisterPage implements OnInit {
         nombre: this.nombre,
         apellido: this.apellido,
         correo: this.email,
-        apellido: this.apellido,
         email: this.email,
         contrasena: this.contrasena,
         contrasena2: this.contrasena2,
