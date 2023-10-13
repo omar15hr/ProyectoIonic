@@ -8,6 +8,8 @@ const keyStorageUser = "usuarioData";
 })
 export class StorageService {
 
+  public correoUsuario:string = "";
+
   constructor() { }
 
   async getItem( llave:string ):Promise<string | null> {
@@ -30,7 +32,9 @@ export class StorageService {
 
     if ( users ) {
       return users;
-    } else {
+    } 
+    else 
+    {
       return []; 
     }
 

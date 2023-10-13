@@ -6,8 +6,6 @@ import { HelperService } from 'src/app/services/helper.service';
 import { StorageService } from 'src/app/services/storage.service';
 
 
-
-
 @Component({
   selector: 'app-menu-principal',
   templateUrl: './menu-principal.page.html',
@@ -27,7 +25,8 @@ export class MenuPrincipalPage implements OnInit {
 
   ngOnInit() {
     setTimeout(() => { this.loaded = true; }, 2000);
-    this.parametroIdCuenta = this.activatedRoute.snapshot.params['idCuenta'];
+    /*this.parametroIdCuenta = this.activatedRoute.snapshot.params['idCuenta'];*/
+    this.parametroIdCuenta = this.storage.correoUsuario;
     this.cargaUsuario();
   }
 

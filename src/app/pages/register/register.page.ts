@@ -68,6 +68,8 @@ export class RegisterPage implements OnInit {
     let user = 
     [
       {
+        nombre: this.nombre,
+        apellido: this.apellido,
         correo: this.email,
         apellido: this.apellido,
         email: this.email,

@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { HelperService } from 'src/app/services/helper.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginPage implements OnInit {
     private router:Router, 
     private helper:HelperService, 
     private toastCtrl: ToastController,
-    private auth:AngularFireAuth
+    private auth:AngularFireAuth,
+    private storage:StorageService
   ) { }
 
   ngOnInit() {
@@ -43,16 +45,19 @@ export class LoginPage implements OnInit {
     // USUARIO INGRESA CON DATOS CORRECTOS
     try {
       const req = await this.auth.signInWithEmailAndPassword(this.usuario,this.contrasena);
-
+      this.storage.correoUsuario = this.usuario;
       await loader.dismiss();
-      var idCuenta = this.usuario;
-      this.router.navigateByUrl('menu-principal/' + idCuenta);
+      this.router.navigateByUrl('menu-principal');
 
       // USUARIO INGRESA CON CORREO INVALIDO O CONTRASEÑA MUY CORTA
     } catch (error:any) {
       if (error.code == 'auth/invalid-email' || error.code == 'auth/user-not-found' ) {
         await loader.dismiss();
         await this.helper.showAlert("El correo no es el correcto.","Error","No pudo ingresar");
+      }
+      if(error.code == 'auth/wrong-password'){
+        await loader.dismiss();
+        await this.helper.showAlert("La contraseña no es la correcta.","Error","No pudo ingresar");
       }
       if (error.code == 'auth/weak-password') {
         await loader.dismiss();

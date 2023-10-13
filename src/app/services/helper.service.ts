@@ -15,6 +15,12 @@ export class HelperService {
     return alert;
   }
 
+  async showAlert2(msg:string,title:string){
+    var alert = await this.alertService.create({cssClass:"alertClass",message:msg,header:title,buttons:['Aceptar']})
+    await alert.present();
+    return alert;
+}
+
   async showConfirm(msg:string,btn_si:string,btn_no:string){
     let promise = new Promise<boolean>(async (resolve) =>{
       var alert = await this.alertService.create({cssClass:"", message:msg,buttons:

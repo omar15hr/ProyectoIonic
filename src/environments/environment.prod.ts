@@ -1,4 +1,4 @@
-export const environment = {
+/*export const environment = {
   production: true,
   // Configuracion de firebase de OMAR
   firebaseConfig : {
@@ -9,9 +9,9 @@ export const environment = {
     messagingSenderId: "803987788519",
     appId: "1:803987788519:web:bd5e9a2496d75f4cf60842"
   }
-};
+};*/
 
-/*export const environment = {
+export const environment = {
   production: true,
   // Configuracion de firebase de JUAN
   firebaseConfig : {
@@ -23,4 +23,4 @@ export const environment = {
     appId: "1:692501145529:web:c2e3e706bfa1a0a9f97868"
   }
 };
-*/
+
