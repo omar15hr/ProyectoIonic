@@ -63,7 +63,6 @@ export class RegisterPage implements OnInit {
   // Funcion para registrar al usuario con correo y contraseña
   async registro(){
 
-
     // Objeto usuario
     let user = 
     [
@@ -79,6 +78,24 @@ export class RegisterPage implements OnInit {
       }
     ]
 
+    // Validar region
+    if (this.regionSel == 0) {
+      await this.helper.showAlert("La región es obligatoria", "Error", "No Registrado");
+      return;
+      }
+
+    // Validar comuna
+    if (this.comunaSel == 0) {
+      await this.helper.showAlert("La comuna es obligatoria", "Error", "No Registrado");
+      return;
+      }
+
+    // Validar contraseñas
+    if (this.contrasena != this.contrasena2) {
+      await this.helper.showAlert("Las contraseñas no coinciden", "Error", "No Registrado");
+      return;
+    }
+
     try {
     const req = await this.auth.createUserWithEmailAndPassword( this.email, this.contrasena );
 
@@ -88,7 +105,8 @@ export class RegisterPage implements OnInit {
     await this.router.navigateByUrl('login');
 
     // await loader.dismiss(); 
-    await this.helper.showAlert("Usuario registrado correctamente","Información","Registrado");  
+    await this.helper.showAlert("Usuario registrado correctamente","Información","Registrado");
+
     } catch (error:any) {
       if (error.code == 'auth/email-already-in-use') {
         // await loader.dismiss();
@@ -98,7 +116,11 @@ export class RegisterPage implements OnInit {
         // await loader.dismiss();
         await this.helper.showAlert("El correo no es el correcto.","Error","No Registrado");
       }
-    }    
+      if (error.code == 'auth/weak-password') {
+        // await loader.dismiss();
+        await this.helper.showAlert("La contraseña debe tener minimo 6 caracteres","Error","No Registrado");
+      }
+    }
     
   }
 
