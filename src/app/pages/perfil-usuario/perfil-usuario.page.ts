@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
@@ -10,8 +11,10 @@ export class PerfilUsuarioPage implements OnInit {
 
   usuario:any;
   usuarioFiltro:any;
+
   constructor(
     private storage:StorageService,
+    private auth:AngularFireAuth
   ) { }
 
   ngOnInit() {
@@ -21,13 +24,9 @@ export class PerfilUsuarioPage implements OnInit {
 
   async cargarUsuario(){
     this.usuario = await this.storage.obtenerUsuario();
-    console.log("USUARIOS REGISTRADOS",this.usuario);
 
-    this.usuarioFiltro = this.usuario.filter((e: { correo: string; }) => e.correo == this.storage.correoUsuario);
-    console.log("USUARIO FILTRADOS", this.usuarioFiltro);
-    
-
-    
+    let emailUserToken = await this.auth.currentUser;
+    this.usuarioFiltro = this.usuario.filter((e: { correo: string; }) => e.correo == emailUserToken?.email);
   }
 
 }
