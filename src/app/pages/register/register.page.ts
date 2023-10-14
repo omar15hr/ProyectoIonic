@@ -96,6 +96,24 @@ export class RegisterPage implements OnInit {
       return;
     }
 
+    // Validar contraseñas
+    if (this.contrasena.length >= 20 && this.contrasena2.length >= 20) {
+      await this.helper.showAlert("Las contraseñas superan el máximo de carácteres", "Error", "No Registrado");
+      return;
+    } 
+
+    // Validar nombre
+    if (this.nombre.length >= 20) {
+      await this.helper.showAlert("El nombre supera el máximo de carácteres", "Error", "No Registrado");
+      return;
+    } 
+
+    // Validar apellido
+    if (this.apellido.length >= 20) {
+      await this.helper.showAlert("El apellido supera el máximo de carácteres", "Error", "No Registrado");
+      return;
+    } 
+
     try {
     const req = await this.auth.createUserWithEmailAndPassword( this.email, this.contrasena );
 
