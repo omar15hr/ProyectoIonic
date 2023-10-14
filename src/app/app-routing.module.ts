@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
-import { AngularFireAuthGuard, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard';
+import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard';
 
 const redireccionLogin = () => redirectUnauthorizedTo(['/login']);
 
@@ -64,9 +64,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/prev-visualizacion/prev-visualizacion.module').then( m => m.PrevVisualizacionPageModule)
   },
   {
+    canActivate:[ AngularFireAuthGuard ],
+    data:{ authGuardPipe: redireccionLogin },
     path: 'perfil-usuario',
     loadChildren: () => import('./pages/perfil-usuario/perfil-usuario.module').then( m => m.PerfilUsuarioPageModule)
-  },  {
+  },
+  {
+    canActivate:[ AngularFireAuthGuard ],
+    data:{ authGuardPipe: redireccionLogin },
     path: 'confirmar-qr',
     loadChildren: () => import('./modals/confirmar-qr/confirmar-qr.module').then( m => m.ConfirmarQrPageModule)
   },
