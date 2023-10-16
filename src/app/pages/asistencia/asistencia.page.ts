@@ -21,18 +21,18 @@ export class AsistenciaPage implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.showLoading();
-      
+    /*this.showLoading();*/
+    const loader = this.helper.showLoader("Cargando...");
   }
 
-  async showLoading() {
+  /*async showLoading() {
     const loading = await this.loadingCtrl.create({
       message: 'Cargando...',
       duration: 1500,
     });
 
     loading.present();
-  }
+  }*/
 
   async mostrarPrev(){
     const modal = await this.modalCtrl.create({
@@ -62,7 +62,6 @@ export class AsistenciaPage implements OnInit {
       .fromTo('transform', 'translateX(0px)', 'translateX(100px)')
       .fromTo('opacity', '1', '0.2');
     this.animation.play();
-    // this.animationAsistencia.stop();
   }
 
   ionViewWillLeave(){
@@ -70,7 +69,7 @@ export class AsistenciaPage implements OnInit {
   }
 
   async scan() {
-    let resultadoQr = ((await BarcodeScanner.scan()).code)
+   /* let resultadoQr = ((await BarcodeScanner.scan()).code) */
 
     this.helper.showModal(ConfirmarQrPage)
   }
