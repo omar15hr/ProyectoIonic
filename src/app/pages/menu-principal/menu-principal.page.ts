@@ -26,7 +26,6 @@ export class MenuPrincipalPage implements OnInit {
 
   ngOnInit() {
     setTimeout(() => { this.loaded = true; }, 2000);
-    /*this.parametroIdCuenta = this.activatedRoute.snapshot.params['idCuenta'];*/
     this.parametroIdCuenta = this.storage.correoUsuario;
 
     // Toast

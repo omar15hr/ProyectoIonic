@@ -78,6 +78,54 @@ export class RegisterPage implements OnInit {
       }
     ]
 
+    // Validar nombre vacio
+    if (this.nombre == "") {
+      await this.helper.showAlert("El nombre es obligatorio", "Error", "No Registrado");
+      return;
+      }
+
+    // Validar largo nombre
+    if (this.nombre.length >= 20) {
+      await this.helper.showAlert("El nombre supera el máximo de carácteres(19)", "Error", "No Registrado");
+      return;
+    }
+
+    // Validar apellido vacio
+    if (this.apellido == "") {
+      await this.helper.showAlert("El apellido es obligatorio", "Error", "No Registrado");
+      return;
+      }
+
+    // Validar largo apellido
+    if (this.apellido.length >= 20) {
+      await this.helper.showAlert("El apellido supera el máximo de carácteres(19)", "Error", "No Registrado");
+      return;
+    }
+
+    // Validar email vacio
+    if (this.email == "") {
+      await this.helper.showAlert("El email es obligatorio", "Error", "No Registrado");
+      return;
+      }
+
+    // Validar contraseña vacia
+    if (this.contrasena == "") {
+      await this.helper.showAlert("La contraseña es obligatorio", "Error", "No Registrado");
+      return;
+      }
+
+    // Validar largo contraseñas
+    if (this.contrasena.length >= 20) {
+      await this.helper.showAlert("Las contraseñas superan el máximo de carácteres(19)", "Error", "No Registrado");
+      return;
+    } 
+
+    // Validar contraseñas iguales
+    if (this.contrasena != this.contrasena2) {
+      await this.helper.showAlert("Las contraseñas no coinciden", "Error", "No Registrado");
+      return;
+    }
+
     // Validar region
     if (this.regionSel == 0) {
       await this.helper.showAlert("La región es obligatoria", "Error", "No Registrado");
@@ -89,30 +137,6 @@ export class RegisterPage implements OnInit {
       await this.helper.showAlert("La comuna es obligatoria", "Error", "No Registrado");
       return;
       }
-
-    // Validar contraseñas
-    if (this.contrasena != this.contrasena2) {
-      await this.helper.showAlert("Las contraseñas no coinciden", "Error", "No Registrado");
-      return;
-    }
-
-    // Validar contraseñas
-    if (this.contrasena.length >= 20 && this.contrasena2.length >= 20) {
-      await this.helper.showAlert("Las contraseñas superan el máximo de carácteres", "Error", "No Registrado");
-      return;
-    } 
-
-    // Validar nombre
-    if (this.nombre.length >= 20) {
-      await this.helper.showAlert("El nombre supera el máximo de carácteres", "Error", "No Registrado");
-      return;
-    } 
-
-    // Validar apellido
-    if (this.apellido.length >= 20) {
-      await this.helper.showAlert("El apellido supera el máximo de carácteres", "Error", "No Registrado");
-      return;
-    } 
 
     try {
     const req = await this.auth.createUserWithEmailAndPassword( this.email, this.contrasena );
@@ -132,7 +156,7 @@ export class RegisterPage implements OnInit {
       }
       if (error.code == 'auth/invalid-email') {
         // await loader.dismiss();
-        await this.helper.showAlert("El correo no es el correcto.","Error","No Registrado");
+        await this.helper.showAlert("El correo no es un correo valido.","Error","No Registrado");
       }
       if (error.code == 'auth/weak-password') {
         // await loader.dismiss();

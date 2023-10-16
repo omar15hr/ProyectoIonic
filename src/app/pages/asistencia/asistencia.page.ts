@@ -15,24 +15,17 @@ import { ConfirmarQrPage } from 'src/app/modals/confirmar-qr/confirmar-qr.page';
 export class AsistenciaPage implements OnInit {
 
   constructor( 
-      private loadingCtrl: LoadingController, 
+      private loadingCtrl: LoadingController,
       private modalCtrl: ModalController,
       private animationCtrl: AnimationController,
       private helper: HelperService
     ) { }
 
   ngOnInit() {
-    this.showLoading();
+    const loader = this.helper.showLoader("Cargando...");
   }
 
-  async showLoading() {
-    const loading = await this.loadingCtrl.create({
-      message: 'Cargando...',
-      duration: 1500,
-    });
-
-    loading.present();
-  }
+  
 
   async mostrarPrev(){
     const modal = await this.modalCtrl.create({
@@ -62,7 +55,6 @@ export class AsistenciaPage implements OnInit {
       .fromTo('transform', 'translateX(0px)', 'translateX(100px)')
       .fromTo('opacity', '1', '0.2');
     this.animation.play();
-    // this.animationAsistencia.stop();
   }
 
   ionViewWillLeave(){
@@ -71,6 +63,8 @@ export class AsistenciaPage implements OnInit {
 
   async scan() {
     let resultadoQr = ((await BarcodeScanner.scan()).code)
+   /* let resultadoQr = ((await BarcodeScanner.scan()).code) */
+
     this.helper.showModal(ConfirmarQrPage)
 
     var infoQr = [];

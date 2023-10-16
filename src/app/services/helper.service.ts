@@ -10,7 +10,7 @@ export class HelperService {
       private alertService: AlertController, 
       private loadingController:LoadingController,
       private toastController: ToastController,
-      private modalController: ModalController
+      private modalController: ModalController,
     ) { }
 
 
@@ -54,7 +54,8 @@ async showLoader(msg:string){
     {
       cssClass:"loaderClass",
       message:msg,
-      translucent:true
+      translucent:true,
+      duration:1500
     }
     );
     await loader.present();
@@ -67,7 +68,7 @@ async showLoader(msg:string){
         cssClass:"toastClass",
         message:msg,
         duration:duration,
-        position: "bottom",
+        position:"bottom",
         color:"dark"
       })
       await toast.present();
@@ -83,6 +84,15 @@ async showLoader(msg:string){
         backdropDismiss: hideable
       })
       await modal.present()
+  }
+
+  async showLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Cargando...',
+      duration: 1500,
+    });
+
+    loading.present();
   }
 
 }
