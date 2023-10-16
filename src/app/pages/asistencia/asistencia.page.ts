@@ -11,6 +11,7 @@ import { ConfirmarQrPage } from 'src/app/modals/confirmar-qr/confirmar-qr.page';
   templateUrl: './asistencia.page.html',
   styleUrls: ['./asistencia.page.scss'],
 })
+
 export class AsistenciaPage implements OnInit {
 
   constructor( 
@@ -22,7 +23,6 @@ export class AsistenciaPage implements OnInit {
 
   ngOnInit() {
     this.showLoading();
-      
   }
 
   async showLoading() {
@@ -71,7 +71,20 @@ export class AsistenciaPage implements OnInit {
 
   async scan() {
     let resultadoQr = ((await BarcodeScanner.scan()).code)
-
     this.helper.showModal(ConfirmarQrPage)
+
+    var infoQr = [];
+  
+    infoQr.push(
+      {
+        asignatura: "PGY4112",
+        docente: "Alejandro",
+        sala:"Laboratorio 3"
+      }
+    );
+  
+    const parametros = {dataQr: infoQr};
+  
+    this.helper.showModal(ConfirmarQrPage, parametros);
   }
 }
