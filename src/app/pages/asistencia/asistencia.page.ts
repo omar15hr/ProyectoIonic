@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { AnimationController, Animation, IonCard, LoadingController, ModalController } from '@ionic/angular';
+import { AnimationController, Animation, IonCard, ModalController } from '@ionic/angular';
 import { ModalPage } from '../modal/modal.page';
 import { BarcodeScanner } from 'capacitor-barcode-scanner';
 import { HelperService } from 'src/app/services/helper.service';
@@ -14,8 +14,7 @@ import { ConfirmarQrPage } from 'src/app/modals/confirmar-qr/confirmar-qr.page';
 
 export class AsistenciaPage implements OnInit {
 
-  constructor( 
-      private loadingCtrl: LoadingController,
+  constructor(
       private modalCtrl: ModalController,
       private animationCtrl: AnimationController,
       private helper: HelperService
@@ -24,8 +23,6 @@ export class AsistenciaPage implements OnInit {
   ngOnInit() {
     const loader = this.helper.showLoader("Cargando...");
   }
-
-  
 
   async mostrarPrev(){
     const modal = await this.modalCtrl.create({
@@ -63,22 +60,18 @@ export class AsistenciaPage implements OnInit {
 
   async scan() {
     let resultadoQr = ((await BarcodeScanner.scan()).code)
-   /* let resultadoQr = ((await BarcodeScanner.scan()).code) */
 
+    if (resultadoQr) {
+     let newResultadoQr = JSON.parse(resultadoQr)
+     var infoQr = [];
+ 
+     infoQr.push(newResultadoQr)
+    }
     this.helper.showModal(ConfirmarQrPage)
 
-    var infoQr = [];
-  
-    infoQr.push(
-      {
-        asignatura: "PGY4112",
-        docente: "Alejandro",
-        sala:"Laboratorio 3"
-      }
-    );
-  
+
     const parametros = {dataQr: infoQr};
-  
+
     this.helper.showModal(ConfirmarQrPage, parametros);
   }
 }

@@ -13,7 +13,6 @@ export class HelperService {
       private modalController: ModalController,
     ) { }
 
-
   async showAlert( msg:string, title:string, subTitle:string ){
     let alert = await this.alertService.create({ cssClass:"alertClass", message:msg, header:title, subHeader:subTitle, buttons:['Aceptar'] })
     await alert.present();

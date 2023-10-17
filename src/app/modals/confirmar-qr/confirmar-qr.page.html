@@ -8,9 +8,17 @@
 <ion-content [fullscreen]="true">
     <ion-toolbar>
       <ion-card *ngFor="let i of dataQr">
-        <h3>{{i.docente}}</h3>
         <h3>{{i.asignatura}}</h3>
+        <h3>{{i.docente}}</h3>
+        <h3>{{i.fecha}}</h3>
+        <h3>{{i.hora}}</h3>
+        <h3>{{i.leccion}}</h3>
         <h3>{{i.sala}}</h3>
+        <h3>{{i.seccion}}</h3>
       </ion-card>
+
+      <ion-button (click)="confirmar()" expand="block" fill="clear" shape="round">
+        Confirmar
+      </ion-button>
     </ion-toolbar>
 </ion-content>

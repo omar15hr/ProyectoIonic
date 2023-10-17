@@ -52,8 +52,4 @@ export class StorageService {
     this.setItem( keyStorageUser, JSON.stringify( usuario ) )
   }
 
-
-
-
-
 }
