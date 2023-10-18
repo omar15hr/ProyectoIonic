@@ -7,7 +7,7 @@ import { AlertController, LoadingController, ModalController, ToastController } 
 export class HelperService {
 
   constructor( 
-      private alertService: AlertController, 
+      private alertService: AlertController,
       private loadingController:LoadingController,
       private toastController: ToastController,
       private modalController: ModalController,

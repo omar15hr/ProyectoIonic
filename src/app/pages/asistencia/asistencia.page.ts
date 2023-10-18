@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { AnimationController, Animation, IonCard, ModalController } from '@ionic/angular';
+import { AnimationController, Animation, IonCard, ModalController, AlertController } from '@ionic/angular';
 import { ModalPage } from '../modal/modal.page';
 import { BarcodeScanner } from 'capacitor-barcode-scanner';
 import { HelperService } from 'src/app/services/helper.service';
@@ -17,7 +17,8 @@ export class AsistenciaPage implements OnInit {
   constructor(
       private modalCtrl: ModalController,
       private animationCtrl: AnimationController,
-      private helper: HelperService
+      private helper: HelperService,
+      private alertService: AlertController
     ) { }
 
   ngOnInit() {
@@ -60,18 +61,18 @@ export class AsistenciaPage implements OnInit {
 
   async scan() {
     let resultadoQr = ((await BarcodeScanner.scan()).code)
-
+  
     if (resultadoQr) {
-     let newResultadoQr = JSON.parse(resultadoQr)
-     var infoQr = [];
- 
-     infoQr.push(newResultadoQr)
+      let newResultadoQr = JSON.parse(resultadoQr)
+      var infoQr = [];
+    
+      infoQr.push(newResultadoQr)
+      const parametros = {dataQr: infoQr};
+      
+      this.helper.showModal(ConfirmarQrPage, parametros);
+    } else {
+      await this.helper.showAlert("No se ingreso la asistencia","Error","No pudo registrar");
     }
-    this.helper.showModal(ConfirmarQrPage)
-
-
-    const parametros = {dataQr: infoQr};
-
-    this.helper.showModal(ConfirmarQrPage, parametros);
   }
+
 }
