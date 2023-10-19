@@ -44,26 +44,9 @@
 <ion-content class="ion-margin" [fullscreen]="true">
   <ion-list *ngIf="loaded">
 
-    <ion-col size-md="6" size-sm="12" size-xs="12">
-      <h2>
-        Bienvenido {{parametroIdCuenta}}
-      </h2>
-  
-      <ion-item>Nombre : {{info?.name}}</ion-item>
-      <ion-item>Modelo : {{info?.model}}</ion-item>
-      <ion-item>Plataforma : {{info?.platform}}</ion-item>
-      <ion-item>Sistema Operativo : {{info?.operatingSystem}}</ion-item>
-      <ion-item>Version de S.O. : {{info?.osVersion}}</ion-item>
-      <ion-item>Manufacturador : {{info?.manufacturer}}</ion-item>
-      <ion-item>Es virtual/simulado : {{info?.isVirtual}}</ion-item>
-    </ion-col>
-
-    <ion-col>
-      <ion-item>Nivel de Bateria: {{batteryInfo?.batteryLevel}}</ion-item>
-      <ion-item>Lenguaje local del dispositivo: {{languageLocaleCode?.value}}</ion-item>
-      <ion-item>Tag del Lenguage local: {{languageTag?.value}}</ion-item>
-    </ion-col>
-    
+    <h2>
+      Bienvenido {{parametroIdCuenta}}
+    </h2>
 
     <ion-item routerLink="/asistencia">
       <ion-thumbnail slot="start">
@@ -82,6 +65,22 @@
         <h2>Visualizar Asistencia</h2>
       </ion-label>
     </ion-item>
+
+    <ion-col size-md="6" size-sm="12" size-xs="12">
+      <ion-item>Nombre : {{info?.name}}</ion-item>
+      <ion-item>Modelo : {{info?.model}}</ion-item>
+      <ion-item>Plataforma : {{info?.platform}}</ion-item>
+      <ion-item>Sistema Operativo : {{info?.operatingSystem}}</ion-item>
+      <ion-item>Version de S.O. : {{info?.osVersion}}</ion-item>
+      <ion-item>Manufacturador : {{info?.manufacturer}}</ion-item>
+      <ion-item>Es virtual/simulado : {{info?.isVirtual}}</ion-item>
+    </ion-col>
+
+    <ion-col size-md="6" size-sm="12" size-xs="12">
+      <ion-item>Nivel de Bateria: {{batteryInfo?.batteryLevel}}</ion-item>
+      <ion-item>Lenguaje local del dispositivo: {{languageLocaleCode?.value}}</ion-item>
+      <ion-item>Tag del Lenguage local: {{languageTag?.value}}</ion-item>
+    </ion-col>
 
   </ion-list>
   
