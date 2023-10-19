@@ -14,7 +14,9 @@ import { StorageService } from 'src/app/services/storage.service';
 export class MenuPrincipalPage implements OnInit {
 
   parametroIdCuenta: string | undefined;
+  
   info:any;
+  batteryInfo:any;
   deviceID:any;
   languageLocaleCode:any;
   languageTag:any;
@@ -29,8 +31,8 @@ export class MenuPrincipalPage implements OnInit {
 
   ngOnInit() {
     setTimeout(() => { this.loaded = true; }, 2000);
-    this.parametroIdCuenta = this.storage.correoUsuario;
     this.deviceInfo();
+    this.parametroIdCuenta = this.storage.correoUsuario;
 
     // Toast
     this.helper.showToast("Sesión iniciada correctamente. Bienvenido")
@@ -65,8 +67,12 @@ export class MenuPrincipalPage implements OnInit {
   }
 
   async deviceInfo(){
-    var info = await Device.getInfo();
-    console.log(info);
+    
+    this.info = await Device.getInfo();
+    this.deviceID = await Device.getId();
+    this.batteryInfo = await Device.getBatteryInfo();
+    this.languageLocaleCode = await Device.getLanguageCode();
+    this.languageTag = await Device.getLanguageTag();
   }
 
 }

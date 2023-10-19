@@ -46,7 +46,15 @@
 
     <h2>
       Bienvenido {{parametroIdCuenta}}
-    </h2><hr>
+    </h2>
+    <hr>
+    <ion-item>Nombre : {{info?.name}}</ion-item>
+    <ion-item>Modelo : {{info?.model}}</ion-item>
+    <ion-item>Plataforma : {{info?.platform}}</ion-item>
+    <ion-item>Sistema Operativo : {{info?.operatingSystem}}</ion-item>
+    <ion-item>Version de S.O. : {{info?.osVersion}}</ion-item>
+    <ion-item>Manufacturador : {{info?.manufacturer}}</ion-item>
+    <ion-item>Es virtual/simulado : {{info?.isVirtual}}</ion-item>
 
     <ion-item routerLink="/asistencia">
       <ion-thumbnail slot="start">
