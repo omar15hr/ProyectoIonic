@@ -18,7 +18,6 @@ export class AsistenciaPage implements OnInit {
       private modalCtrl: ModalController,
       private animationCtrl: AnimationController,
       private helper: HelperService,
-      private alertService: AlertController
     ) { }
 
   ngOnInit() {
