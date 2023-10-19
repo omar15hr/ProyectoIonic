@@ -2,7 +2,7 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-
+/*
   export const environment = {
   production: false,
   // Configuracion de firebase de OMAR
@@ -16,9 +16,9 @@
   },
   apiUrl:"https://dev.matiivilla.cl/duoc/location/"
 };
+*/
 
 
-/*
 export const environment = {
   production: false,
     //Configuracion de firebase de JUAN
@@ -32,7 +32,7 @@ export const environment = {
   },
   apiUrl:"https://dev.matiivilla.cl/duoc/location/"
 };
-*/
+
 
 /*
  * For easier debugging in development mode, you can import the following file
