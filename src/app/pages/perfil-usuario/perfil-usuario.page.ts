@@ -24,8 +24,7 @@ export class PerfilUsuarioPage implements OnInit {
 
   async cargarUsuario(){
     this.usuario = await this.storage.obtenerUsuario();
-
-    let emailUserToken = await this.auth.currentUser;
+    var emailUserToken = await this.auth.currentUser;
     this.usuarioFiltro = this.usuario.filter((e: { correo: string; }) => e.correo == emailUserToken?.email);
   }
 
