@@ -2,15 +2,9 @@ import { Injectable } from '@angular/core';
 import { Preferences } from '@capacitor/preferences';
 import { HelperService } from './helper.service';
 
-interface Asistencia {
-  asignatura: string;
-  docente: string;
-  fecha: string;
-  hora: string;
-  leccion: string;
-  sala: string;
-  seccion: string;
-}
+let validacionValores: string;
+let validacionUsuario: string;
+let nuevoUsuario: any[]
 
 const keyStorageUser = "usuarioData";
 
@@ -43,31 +37,45 @@ export class StorageService {
 
     if ( users ) {
       return users;
-    } 
-    else 
+    }
+    else
     {
       return [];
     }
   }
 
-  objetoExistente = ( objetoNuevo: Asistencia , array: Asistencia[] ) => array.some( asistencia => asistencia.asignatura === objetoNuevo.asignatura && asistencia.fecha === objetoNuevo.fecha)
-
+  // Funcion para obtener el valor de la propiedad
+  obtenerValorPropiedad(objeto: any, propiedad1: string, propiedad2:string): any {
+    if (objeto.hasOwnProperty(propiedad1) && objeto.hasOwnProperty(propiedad2)) {
+      return objeto[propiedad1] + objeto[propiedad2]
+    }
+  }
 
   async guardarUsuario( usuario:any[] ) {
     const usersStorage = await this.obtenerUsuario();
 
-    // Procesar los nuevos objetos
     for (const i of usersStorage) {
-      usersStorage.forEach((i: any) => {
+      validacionValores = this.obtenerValorPropiedad(i,"fecha","asignatura")
 
-        if (this.objetoExistente(i, usersStorage)) {
-          this.helper.showAlert( "El estudiante ya ha registrado asistencia para un objeto similar.", "Error", "No se pudo agregar asistencia" )
-        
+      let agregarUsuario = true;
+
+      for (const j of usuario) {
+        validacionUsuario = this.obtenerValorPropiedad(j,"fecha","asignatura")
+
+        if(validacionValores === validacionUsuario) {
+          agregarUsuario = false;
+          break;
         } else {
-          usuario.push(i);
-          this.helper.showAlert( "Asistencia registrada con éxito para un nuevo objeto.", "Exitoso", "Asistencia Registrada")
+          agregarUsuario = true;
         }
-      });
+      }
+
+      if (agregarUsuario) {
+        usuario.push(i);
+        console.log(usuario);
+      } else {
+        await this.helper.showAlert("La asistencia ya existe", "Error", "No pudo ingresar asistencia");
+      }
     }
 
     this.setItem( keyStorageUser, JSON.stringify( usuario ) )

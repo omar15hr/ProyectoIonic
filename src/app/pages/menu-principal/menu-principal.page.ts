@@ -6,7 +6,6 @@ import { MenuController } from '@ionic/angular';
 import { HelperService } from 'src/app/services/helper.service';
 import { StorageService } from 'src/app/services/storage.service';
 
-
 @Component({
   selector: 'app-menu-principal',
   templateUrl: './menu-principal.page.html',
