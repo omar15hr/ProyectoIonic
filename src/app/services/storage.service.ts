@@ -72,7 +72,6 @@ export class StorageService {
 
       if (agregarUsuario) {
         usuario.push(i);
-        console.log(usuario);
       } else {
         await this.helper.showAlert("La asistencia ya existe", "Error", "No pudo ingresar asistencia");
       }

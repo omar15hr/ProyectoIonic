@@ -29,8 +29,6 @@ export class PerfilUsuarioPage implements OnInit {
     let emailUserToken = await this.auth.currentUser;
     this.usuarioFiltro = emailUserToken?.email
     return this.usuarioFiltro
-    
-    // this.usuarioFiltro = this.usuario.filter((e: { correo: string; }) => e.correo == emailUserToken?.email);
   }
 
 }
