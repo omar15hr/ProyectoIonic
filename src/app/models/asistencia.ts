@@ -1,4 +1,5 @@
 export interface Asistencia{
+  idAsistencia: string;
   asignatura:string,
   docente:string,
   fecha:string,
@@ -6,5 +7,5 @@ export interface Asistencia{
   leccion:string,
   sala:string,
   seccion:string,
-  correoAlumno:string
+  email:string
 }

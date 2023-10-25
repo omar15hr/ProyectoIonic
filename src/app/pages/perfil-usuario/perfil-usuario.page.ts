@@ -8,13 +8,7 @@ import { StorageService } from 'src/app/services/storage.service';
   styleUrls: ['./perfil-usuario.page.scss'],
 })
 export class PerfilUsuarioPage implements OnInit {
-
-  usuario:any;
-  usuarioFiltro:any;
-  emailVerificado:any;
-  esAnonimo:any;
-  usuarioCreacion:any;
-  usuarioUltimoLogin:any;
+  usuarios:any;
 
   constructor(
     private storage:StorageService,
@@ -27,13 +21,8 @@ export class PerfilUsuarioPage implements OnInit {
 
 
   async cargarUsuario(){
-    this.usuario = await this.storage.obtenerUsuario();
-    let emailUserToken = await this.auth.currentUser;
-    this.usuarioFiltro = emailUserToken?.email;
-    this.emailVerificado = emailUserToken?.emailVerified;
-    this.esAnonimo = emailUserToken?.isAnonymous;
-    this.usuarioCreacion = emailUserToken?.metadata.creationTime;
-    this.usuarioUltimoLogin = emailUserToken?.metadata.lastSignInTime;
+    const actualUser = await this.auth.currentUser;
+    this.usuarios = (await this.storage.obtenerUsuario()).filter(e => e.correo === actualUser?.email!);
   }
 
 }

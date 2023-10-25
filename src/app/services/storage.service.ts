@@ -36,7 +36,7 @@ export class StorageService {
       return [];
     }
 
-    const users = JSON.parse( usuarios );
+    const users:any[] = JSON.parse( usuarios );
 
     if ( users ) {
       return users;
@@ -69,7 +69,7 @@ export class StorageService {
       return [];
     }
 
-    const asis = JSON.parse( asistencias );
+    const asis:any[] = JSON.parse( asistencias );
 
     if ( asis ) {
       return asis;
@@ -77,13 +77,6 @@ export class StorageService {
     else
     {
       return [];
-    }
-  }
-
-  // Funcion para obtener el valor de la propiedad
-  obtenerValorPropiedad(objeto: any, propiedad1: string, propiedad2:string): any {
-    if (objeto.hasOwnProperty(propiedad1) && objeto.hasOwnProperty(propiedad2)) {
-      return objeto[propiedad1] + objeto[propiedad2]
     }
   }
 
@@ -97,31 +90,6 @@ export class StorageService {
       }
     }
     this.setItem(storageAsistencia,JSON.stringify(asistencia))
-
-    // for (const i of usersStorageAsistencia) {
-    //   for (const i of usersStorageAsistencia) {
-    //     validacionValores = this.obtenerValorPropiedad(i,"fecha","asignatura")
-  
-    //     let agregarAsistencia = true;
-  
-    //     for (const j of asistencia) {
-    //       validacionAsistencia = this.obtenerValorPropiedad(j,"fecha","asignatura")
-  
-    //       if(validacionValores === validacionAsistencia) {
-    //         agregarAsistencia = false;
-    //         break;
-    //       } else {
-    //         agregarAsistencia = true;
-    //       }
-    //     }
-  
-    //     if (agregarAsistencia) {
-    //       asistencia.push(i);
-    //     } else {
-    //       await this.helper.showAlert("La asistencia ya existe", "Error", "No pudo ingresar asistencia");
-    //     }
-    //   }
-    // }
   }
 
 }
