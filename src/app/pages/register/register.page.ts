@@ -49,19 +49,23 @@ export class RegisterPage implements OnInit {
   //Funcion para cargar la comuna
   async cargarComuna(){
     try {
-      const { data } = await this.locationService.getComuna(this.regionSel);
-      this.comunas = data;
+      const req = await this.locationService.getComuna(this.regionSel);
+      this.comunas = req.data;
       this.disabledComuna = false;
-      
     } catch (error:any) {
       await this.helper.showAlert(error.error.msg, "Error", "No se pudo ingresar")
     }
-
   };
 
 
   // Funcion para registrar al usuario con correo y contraseña
   async registro(){
+    // Cambio de id a nombre de region y comuna
+    const regionFiltrada = this.regiones.filter((regiones) => regiones.id === this.regionSel);
+    const nombreRegion = regionFiltrada[0].nombre;
+    
+    const comunaFiltrada = this.comunas.filter((comunas) => comunas.id === this.comunaSel);
+    const nombreComuna = comunaFiltrada[0].nombre;
 
     // Objeto usuario
     let user = 
@@ -73,8 +77,8 @@ export class RegisterPage implements OnInit {
         email: this.email,
         contrasena: this.contrasena,
         contrasena2: this.contrasena2,
-        regionSel: this.regionSel,
-        comunaSel: this.comunaSel
+        regionSel: nombreRegion,
+        comunaSel: nombreComuna
       }
     ]
 
@@ -82,7 +86,7 @@ export class RegisterPage implements OnInit {
     if (this.nombre == "") {
       await this.helper.showAlert("El nombre es obligatorio", "Error", "No Registrado");
       return;
-      }
+    }
 
     // Validar largo nombre
     if (this.nombre.length >= 20) {
@@ -94,7 +98,7 @@ export class RegisterPage implements OnInit {
     if (this.apellido == "") {
       await this.helper.showAlert("El apellido es obligatorio", "Error", "No Registrado");
       return;
-      }
+    }
 
     // Validar largo apellido
     if (this.apellido.length >= 20) {
@@ -106,19 +110,19 @@ export class RegisterPage implements OnInit {
     if (this.email == "") {
       await this.helper.showAlert("El email es obligatorio", "Error", "No Registrado");
       return;
-      }
+    }
 
     // Validar contraseña vacia
     if (this.contrasena == "") {
       await this.helper.showAlert("La contraseña es obligatorio", "Error", "No Registrado");
       return;
-      }
+    }
 
     // Validar largo contraseñas
     if (this.contrasena.length >= 20) {
       await this.helper.showAlert("Las contraseñas superan el máximo de carácteres(19)", "Error", "No Registrado");
       return;
-    } 
+    }
 
     // Validar contraseñas iguales
     if (this.contrasena != this.contrasena2) {
@@ -130,13 +134,13 @@ export class RegisterPage implements OnInit {
     if (this.regionSel == 0) {
       await this.helper.showAlert("La región es obligatoria", "Error", "No Registrado");
       return;
-      }
+    }
 
     // Validar comuna
     if (this.comunaSel == 0) {
       await this.helper.showAlert("La comuna es obligatoria", "Error", "No Registrado");
       return;
-      }
+    }
 
     try {
     const req = await this.auth.createUserWithEmailAndPassword( this.email, this.contrasena );

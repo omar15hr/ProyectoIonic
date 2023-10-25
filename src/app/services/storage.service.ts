@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Preferences } from '@capacitor/preferences';
 import { HelperService } from './helper.service';
+import { Asistencia } from '../models/asistencia';
 
 let validacionValores: string;
-let validacionUsuario: string;
-let nuevoUsuario: any[]
+let validacionAsistencia: string;
 
-const keyStorageUser = "usuarioData";
+const keyStorageUsuario = "usuarioData";
+const keyStorageAsistencia = "asistenciaData";
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +27,28 @@ export class StorageService {
     await Preferences.set({ key:llave, value:valor });
   }
 
+  // Funcion para obtener usuario de los registros a la app
   async obtenerUsuario(){
-    const usuarios = await this.getItem( keyStorageUser );
+    const usuarios = await this.getItem( keyStorageUsuario );
+
+    if ( usuarios == null ) {
+      return [];
+    }
+
+    const users = JSON.parse( usuarios );
+
+    if ( users ) {
+      return users;
+    }
+    else
+    {
+      return [];
+    }
+  }
+
+  // Funcion para obtener las asistencias del localStorage
+  async obtenerAsistencia(){
+    const usuarios = await this.getItem( keyStorageAsistencia );
 
     if ( usuarios == null ) {
       return [];
@@ -51,32 +72,48 @@ export class StorageService {
     }
   }
 
+  // Funciona para guardar registro de usuario a la app y storage
   async guardarUsuario( usuario:any[] ) {
     const usersStorage = await this.obtenerUsuario();
 
     for (const i of usersStorage) {
-      validacionValores = this.obtenerValorPropiedad(i,"fecha","asignatura")
-
-      let agregarUsuario = true;
-
-      for (const j of usuario) {
-        validacionUsuario = this.obtenerValorPropiedad(j,"fecha","asignatura")
-
-        if(validacionValores === validacionUsuario) {
-          agregarUsuario = false;
-          break;
-        } else {
-          agregarUsuario = true;
-        }
-      }
-
-      if (agregarUsuario) {
+      if (i) {
         usuario.push(i);
-      } else {
-        await this.helper.showAlert("La asistencia ya existe", "Error", "No pudo ingresar asistencia");
       }
     }
 
-    this.setItem( keyStorageUser, JSON.stringify( usuario ) )
+    this.setItem( keyStorageUsuario, JSON.stringify( usuario ) )
+  }
+
+  // Funcion para guardar registro de asistencia en el storage
+  async guardarAsistencia( asistencia:Asistencia[] ) {
+    const usersStorageAsistencia = await this.obtenerAsistencia();
+
+    for (const i of usersStorageAsistencia) {
+      for (const i of usersStorageAsistencia) {
+        validacionValores = this.obtenerValorPropiedad(i,"fecha","asignatura")
+  
+        let agregarAsistencia = true;
+  
+        for (const j of asistencia) {
+          validacionAsistencia = this.obtenerValorPropiedad(j,"fecha","asignatura")
+  
+          if(validacionValores === validacionAsistencia) {
+            agregarAsistencia = false;
+            break;
+          } else {
+            agregarAsistencia = true;
+          }
+        }
+  
+        if (agregarAsistencia) {
+          asistencia.push(i);
+        } else {
+          await this.helper.showAlert("La asistencia ya existe", "Error", "No pudo ingresar asistencia");
+        }
+      }
+    }
+
+    this.setItem( keyStorageAsistencia, JSON.stringify( asistencia ) )
   }
 }

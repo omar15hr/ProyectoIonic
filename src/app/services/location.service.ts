@@ -6,7 +6,6 @@ import { Region } from '../models/region';
 import { environment } from 'src/environments/environment';
 import { Comuna } from '../models/comuna';
 
-
 @Injectable({
   providedIn: 'root'
 })
