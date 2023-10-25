@@ -43,6 +43,11 @@ export class MenuPrincipalPage implements OnInit {
     this.router.navigateByUrl("perfil-usuario");
   }
 
+  // Informacion del dispositivo
+  infoDispositivo(){
+    this.router.navigateByUrl("dispositivo");
+  }
+
   ionViewDidLeave(){
     this.menuCtrl.close();
   }

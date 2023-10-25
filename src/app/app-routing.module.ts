@@ -75,6 +75,13 @@ const routes: Routes = [
     path: 'confirmar-qr',
     loadChildren: () => import('./modals/confirmar-qr/confirmar-qr.module').then( m => m.ConfirmarQrPageModule)
   },
+  {
+    canActivate:[ AngularFireAuthGuard ],
+    data:{ authGuardPipe: redireccionLogin },
+    path: 'dispositivo',
+    loadChildren: () => import('./pages/dispositivo/dispositivo.module').then( m => m.DispositivoPageModule)
+  },
+
 
 
 
