@@ -20,7 +20,7 @@ export class ConfirmarQrPage implements OnInit {
   }
 
   confirmar() {
-    this.storage.guardarUsuario(this.dataQr);
+    this.storage.guardarAsistencia(this.dataQr);
     this.close()
   }
 

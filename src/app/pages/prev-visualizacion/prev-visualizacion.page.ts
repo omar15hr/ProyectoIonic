@@ -7,11 +7,12 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./prev-visualizacion.page.scss'],
 })
 export class PrevVisualizacionPage implements OnInit {
-
   @Input() nombre: string | any;
   @Input() sede: string | any;
 
-  constructor( private modalCtrl: ModalController ) { }
+  constructor( 
+      private modalCtrl: ModalController,
+    ) { }
 
   ngOnInit() {
   }

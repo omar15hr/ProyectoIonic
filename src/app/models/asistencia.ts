@@ -1,5 +1,4 @@
 export interface Asistencia{
-  idAsistencia:string,
   asignatura:string,
   docente:string,
   fecha:string,

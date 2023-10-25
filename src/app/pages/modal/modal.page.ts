@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-modal',
@@ -7,13 +8,15 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./modal.page.scss'],
 })
 export class ModalPage implements OnInit {
+  asistencias:any;
 
   @Input() nombre: string | any;
   @Input() sede: string | any;
 
-  constructor( private modalCtrl: ModalController ) { }
+  constructor( private modalCtrl: ModalController, private storage:StorageService ) { }
 
   ngOnInit() {
+    this.cargarUsuario()
   }
 
   salirPrev() {
@@ -21,6 +24,10 @@ export class ModalPage implements OnInit {
       nombre: 'Felipe',
       pais: 'España'
     });
+  }
+
+  async cargarUsuario(){
+    this.asistencias = await this.storage.obtenerAsistencia();
   }
 
 }
