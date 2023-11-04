@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="azul2">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -7,24 +7,24 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
+<ion-content color="azul5" [fullscreen]="true" class="ion-padding">
 
-  <ion-card>
+  <ion-card color="azul2">
     <ion-card-header class="card-qr">
       <ion-card-title>Escanea el QR de asistencia</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       Al escanear el QR podras quedar asistente en la clase. Recordamos que solo podras ingresar 1 vez por dia en cada clase.
     </ion-card-content>
-    <ion-button (click)="scan()" expand="block" class="ion-padding">
+    <ion-button color="azul8" (click)="scan()" expand="block" class="ion-padding">
       Escanear
     </ion-button>
-    <ion-button id="animation-button" (click)="mostrarPrev()" expand="block" class="ion-padding">
+    <ion-button color="azul9" id="animation-button" (click)="mostrarPrev()" expand="block" class="ion-padding">
       Ver Asistencias
     </ion-button>
   </ion-card>
 
-  <ion-item>
+  <ion-item color="azul2">
     <ion-icon style="width: 100%; height: 100%" name="hand-left-outline"></ion-icon>
     <ion-icon style="width: 100%; height: 100%" name="happy-outline"></ion-icon>
     <ion-icon style="width: 100%; height: 100%" name="hand-right-outline"></ion-icon>

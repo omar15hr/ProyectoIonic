@@ -26,18 +26,15 @@
 @import "@ionic/angular/css/flex-utils.css";
 
 // PALETA DE COLORES
-/*
-AZUL 9 03045E
-AZUL 8 023E8A
-AZUL 7 0077B6
-AZUL 6 0096C7
-AZUL 5 00B4D8
-AZUL 4 48CAE4
-AZUL 3 90E0EF
-AZUL 2 ADE8F4
-AZUL 1 CAF0F8
-
-*/
+$azul-9: #03045E;
+$azul-8: #023E8A;
+$azul-7: #0077B6;
+$azul-6: #0096C7;
+$azul-5: #00B4D8;
+$azul-4: #48CAE4;
+$azul-3: #90E0EF;
+$azul-2: #ADE8F4;
+$azul-1: #CAF0F8;
 
 
 .card-qr {
