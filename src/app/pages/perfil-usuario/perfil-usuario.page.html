@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="azul2">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -7,33 +7,33 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" color="azul5">
   <ion-card *ngFor="let item of usuarios">
-    <ion-item>
+    <ion-item  color="azul7">
       <ion-label class="ion-text-wrap">
         Correo: {{item.correo}}
       </ion-label>
     </ion-item>
 
-    <ion-item>
+    <ion-item color="azul7">
       <ion-label class="ion-text-wrap">
         Nombre: {{item.nombre}}
       </ion-label>
     </ion-item>
 
-    <ion-item>
+    <ion-item color="azul7">
       <ion-label class="ion-text-wrap">
         Apellido: {{item.apellido}}
       </ion-label>
     </ion-item>
 
-    <ion-item>
+    <ion-item color="azul7">
       <ion-label class="ion-text-wrap">
         Region: {{item.regionSel}}
       </ion-label>
     </ion-item>
 
-    <ion-item>
+    <ion-item color="azul7">
       <ion-label class="ion-text-wrap">
         Comuna: {{item.comunaSel}}
       </ion-label>

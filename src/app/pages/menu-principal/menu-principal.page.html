@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="azul2">
     <ion-title>Menu</ion-title>
 
     <ion-button (click)="logout()" slot="end" class="ion-padding">
@@ -13,24 +13,25 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-menu contentId="main-content">
+<!-- MENU LATERAL -->
+<ion-menu contentId="main-content" color="azul5">
   <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="azul2">
       <ion-icon (click)="closeMenu()" style="font-size: 30px;" name="close-outline" slot="end"></ion-icon>
       <ion-title>Menú</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content class="ion-padding" scrollY="false">
-    <ion-list>
-      <ion-item (click)="perfilUsuario()">
+  <ion-content class="ion-padding" scrollY="false" color="azul5">
+    <ion-card>
+      <ion-item (click)="perfilUsuario()" color="azul6">
         <ion-icon style="padding-right: 10px; font-size: 35px;" name="person-circle-outline"></ion-icon>
         <h3>Perfil</h3>
       </ion-item>
-      <ion-item (click)="infoDispositivo()">
+      <ion-item (click)="infoDispositivo()" color="azul7">
         <ion-icon style="padding-right: 10px; font-size: 35px;" name="information-circle-outline"></ion-icon>
         <h3>Dispositivo</h3>
       </ion-item>
-    </ion-list>
+    </ion-card>
   </ion-content>
 </ion-menu>
 <div class="ion-page" id="main-content">
@@ -45,14 +46,15 @@
   <ion-content class="ion-padding"> Tap the button in the toolbar to open the menu. </ion-content>
 </div>
 
-<ion-content class="ion-margin" [fullscreen]="true">
-  <ion-list *ngIf="loaded">
+<!-- MENU PRINCIPAL -->
+<ion-content [fullscreen]="true" color="azul5">
+  <ion-card *ngIf="loaded" color="azul5">
 
     <h2>
       Bienvenido {{parametroIdCuenta}}
     </h2>
 
-    <ion-item routerLink="/asistencia">
+    <ion-item routerLink="/asistencia" color="azul7">
       <ion-thumbnail slot="start">
         <ion-icon style="width: 100%; height: 100%" name="qr-code-outline"></ion-icon>
       </ion-thumbnail>
@@ -61,11 +63,10 @@
       </ion-label>
     </ion-item>
 
-  </ion-list>
+  </ion-card>
   
-  <ion-list *ngIf="!loaded">
-
-    <ion-item>
+  <!-- <ion-list *ngIf="!loaded" >
+    <ion-item color="azul5" >
       <ion-thumbnail slot="start">
         <ion-skeleton-text [animated]="true"></ion-skeleton-text>
       </ion-thumbnail>
@@ -75,7 +76,7 @@
         </h3>
       </ion-label>
     </ion-item>
-  </ion-list>
+  </ion-list> -->
 
   <!-- <ion-img src="assets/img/111.jpg" style="width: 200px; height: 200px;"></ion-img> -->
 </ion-content>

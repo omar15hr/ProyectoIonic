@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="azul2">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -7,25 +7,29 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-margin" [fullscreen]="true">
+<ion-content class="ion-margin" [fullscreen]="true" color="azul5">
 
   <h2>
     Informacion del Dispositivo
   </h2>
 
-  <ion-col size-md="6" size-sm="12" size-xs="12">
-    <ion-item>Nombre : {{info?.name}}</ion-item>
-    <ion-item>Modelo : {{info?.model}}</ion-item>
-    <ion-item>Plataforma : {{info?.platform}}</ion-item>
-    <ion-item>Sistema Operativo : {{info?.operatingSystem}}</ion-item>
-    <ion-item>Version de S.O. : {{info?.osVersion}}</ion-item>
-    <ion-item>Manufacturador : {{info?.manufacturer}}</ion-item>
-    <ion-item>Es virtual/simulado : {{info?.isVirtual}}</ion-item>
-  </ion-col>
+  <ion-item color="azul5" class="ion-padding">
+    <ion-col size-md="6" size-sm="12" size-xs="12">
+      <ion-item color="azul7">Nombre : {{info?.name}}</ion-item>
+      <ion-item color="azul7">Modelo : {{info?.model}}</ion-item>
+      <ion-item color="azul7">Plataforma : {{info?.platform}}</ion-item>
+      <ion-item color="azul7">Sistema Operativo : {{info?.operatingSystem}}</ion-item>
+      <ion-item color="azul7">Version de S.O. : {{info?.osVersion}}</ion-item>
+      <ion-item color="azul7">Manufacturador : {{info?.manufacturer}}</ion-item>
+      <ion-item color="azul7">Es virtual/simulado : {{info?.isVirtual}}</ion-item>
+    </ion-col>
+  </ion-item>
 
-  <ion-col size-md="6" size-sm="12" size-xs="12">
-    <ion-item>Nivel de Bateria: {{batteryInfo?.batteryLevel}}</ion-item>
-    <ion-item>Lenguaje local del dispositivo: {{languageLocaleCode?.value}}</ion-item>
-    <ion-item>Tag del Lenguage local: {{languageTag?.value}}</ion-item>
-  </ion-col>
+  <ion-item color="azul5" class="ion-padding">
+    <ion-col size-md="6" size-sm="12" size-xs="12">
+      <ion-item color="azul7">Nivel de Bateria: {{batteryInfo?.batteryLevel}}</ion-item>
+      <ion-item color="azul7">Lenguaje local del dispositivo: {{languageLocaleCode?.value}}</ion-item>
+      <ion-item color="azul7">Tag del Lenguage local: {{languageTag?.value}}</ion-item>
+    </ion-col>
+  </ion-item>
 </ion-content>
