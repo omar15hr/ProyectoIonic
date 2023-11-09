@@ -42,16 +42,50 @@ $azul-1: #CAF0F8;
     flex-flow: column-reverse;
 }
 
-// @font-face {
-//   font-family: titulo;
-//   src: url(/assets/fonts/Baguile.otf);
-// }
+@font-face {
+  font-family: titulo;
+  src: url(/assets/fonts/lemonMilk.otf);
+}
+
+@font-face {
+  font-family: texto;
+  src: url(/assets/fonts/BebasNeue.otf);
+}
+
+@font-face {
+  font-family: texto2;
+  src: url(/assets/fonts/Roboto.otf);
+}
 
 // ion-card-title {
 //   font-family: titulo;
 //   font-size: 30px;
 // }
 
-// ion-title {
-//   font-family: titulo;
-// }
+ion-title {
+  font-family: titulo;
+}
+
+h2, h1 {
+  font-family: texto;
+}
+
+ion-item {
+  font-family: titulo;
+}
+
+ion-card-title {
+  font-family: titulo;
+}
+
+ion-card-content {
+  font-family: texto2;
+}
+
+ion-button {
+  font-family: texto2;
+}
+
+ion-label {
+  font-family: titulo;
+}
