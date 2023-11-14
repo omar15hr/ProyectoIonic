@@ -54,13 +54,13 @@ $azul-1: #CAF0F8;
 
 @font-face {
   font-family: texto2;
-  src: url(/assets/fonts/Roboto.otf);
+  src: url(/assets/fonts/Roboto.ttf);
 }
 
-// ion-card-title {
-//   font-family: titulo;
-//   font-size: 30px;
-// }
+ion-card-title {
+  font-family: titulo;
+  font-size: 30px;
+}
 
 ion-title {
   font-family: titulo;

@@ -15,7 +15,7 @@
 
   <div class="container">
     <ion-card-content>
-      <ion-input 
+      <ion-input
         [(ngModel)]="usuario" 
         label="Usuario: " 
         labelPlacement="floating" 
@@ -35,24 +35,24 @@
       </ion-input>
 
       <ion-button 
+        color="azul7" 
         (click)="onLogin()"
-        color="tertiary" 
-        shape="round"
-        class="ion-padding"
-      ><ion-icon slot="start" name="log-in-outline"></ion-icon> 
-        Ingresar 
+        shape="round" 
+        class="ion-padding">
+          <ion-icon slot="start" name="log-in-outline"></ion-icon> 
+          Ingresar 
       </ion-button>
       
       <ion-button 
-        (click)="Registrarse()" 
-        color="tertiary" 
+        color="azul8"
+        (click)="Registrarse()"
         shape="round"
         class="ion-padding"
       > Registro de Usuario </ion-button>
 
       <ion-button 
+        color="azul9"
         (click)="recuperarPassword()" 
-        color="tertiary" 
         shape="round"
         class="ion-padding"
       > Recuperar Contraseña </ion-button>

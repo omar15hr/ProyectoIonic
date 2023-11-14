@@ -1,23 +1,33 @@
 ion-card-title{
     text-align: center;
-    
     }
     
 ion-button{
     display: flex;
     flex-direction: row;
-    
     }
     
 ion-card{
     margin-top: 100px;
+    background: var(--ion-color-azul3);
     }
 
 ion-input{
-    background-color: #eeeeee;
+    background: var(--ion-color-azul2-tint);
 }
 
 ion-card-title{
     color: #00000f;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+ion-content{
+    --background: var(--ion-color-azul4);
+}
+
+ion-toolbar{
+    --background: var(--ion-color-azul2);
+}
+
+ion-item{
+    --background: var(--ion-color-azul2-tint);
 }
