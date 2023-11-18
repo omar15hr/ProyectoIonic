@@ -21,6 +21,7 @@ export class RegisterPage implements OnInit {
   contrasena:string = "";
   contrasena2:string = "";
   email:string = "";
+
   regiones:Region[]=[];
   comunas:Comuna[]=[];
   regionSel:number = 0;
@@ -28,8 +29,8 @@ export class RegisterPage implements OnInit {
 
   disabledComuna:boolean = true;
 
-  constructor( 
-    private router:Router, 
+  constructor(
+    private router:Router,
     private helper:HelperService,
     private auth:AngularFireAuth,
     private storage:StorageService,
@@ -60,10 +61,71 @@ export class RegisterPage implements OnInit {
 
   // Funcion para registrar al usuario con correo y contraseña
   async registro(){
+
+    // Validar nombre vacio
+    if (this.nombre === "") {
+      await this.helper.showAlert("El nombre es obligatorio", "Error", "No Registrado");
+      return;
+    }
+
+    // Validar largo nombre
+    if (this.nombre.length >= 20) {
+      await this.helper.showAlert("El nombre supera el máximo de carácteres(19)", "Error", "No Registrado");
+      return;
+    }
+
+    // Validar apellido vacio
+    if (this.apellido === "") {
+      await this.helper.showAlert("El apellido es obligatorio", "Error", "No Registrado");
+      return;
+    }
+
+    // Validar largo apellido
+    if (this.apellido.length >= 20) {
+      await this.helper.showAlert("El apellido supera el máximo de carácteres(19)", "Error", "No Registrado");
+      return;
+    }
+
+    // Validar email vacio
+    if (this.email === "") {
+      await this.helper.showAlert("El email es obligatorio", "Error", "No Registrado");
+      return;
+    }
+    
+    // Validar contraseña vacia
+    if (this.contrasena === "") {
+      await this.helper.showAlert("La contraseña es obligatorio", "Error", "No Registrado");
+      return;
+    }
+    
+    // Validar largo contraseñas
+    if (this.contrasena.length >= 20) {
+      await this.helper.showAlert("Las contraseñas superan el máximo de carácteres(19)", "Error", "No Registrado");
+      return;
+    }
+
+    // Validar contraseñas iguales
+    if (this.contrasena !== this.contrasena2) {
+      await this.helper.showAlert("Las contraseñas no coinciden", "Error", "No Registrado");
+      return;
+    }
+
+    // Validar region
+    if (this.regionSel === 0) {
+      await this.helper.showAlert("La región es obligatoria", "Error", "No Registrado");
+      return;
+    }
+
+    // Validar comuna
+    if (this.comunaSel === 0) {
+      await this.helper.showAlert("La comuna es obligatoria", "Error", "No Registrado");
+      return;
+    }
+
     // Cambio de id a nombre de region y comuna
     const regionFiltrada = this.regiones.filter((regiones) => regiones.id === this.regionSel);
     const nombreRegion = regionFiltrada[0].nombre;
-    
+
     const comunaFiltrada = this.comunas.filter((comunas) => comunas.id === this.comunaSel);
     const nombreComuna = comunaFiltrada[0].nombre;
 
@@ -79,66 +141,6 @@ export class RegisterPage implements OnInit {
       }
     ]
 
-    // Validar nombre vacio
-    if (this.nombre == "") {
-      await this.helper.showAlert("El nombre es obligatorio", "Error", "No Registrado");
-      return;
-    }
-
-    // Validar largo nombre
-    if (this.nombre.length >= 20) {
-      await this.helper.showAlert("El nombre supera el máximo de carácteres(19)", "Error", "No Registrado");
-      return;
-    }
-
-    // Validar apellido vacio
-    if (this.apellido == "") {
-      await this.helper.showAlert("El apellido es obligatorio", "Error", "No Registrado");
-      return;
-    }
-
-    // Validar largo apellido
-    if (this.apellido.length >= 20) {
-      await this.helper.showAlert("El apellido supera el máximo de carácteres(19)", "Error", "No Registrado");
-      return;
-    }
-
-    // Validar email vacio
-    if (this.email == "") {
-      await this.helper.showAlert("El email es obligatorio", "Error", "No Registrado");
-      return;
-    }
-
-    // Validar contraseña vacia
-    if (this.contrasena == "") {
-      await this.helper.showAlert("La contraseña es obligatorio", "Error", "No Registrado");
-      return;
-    }
-
-    // Validar largo contraseñas
-    if (this.contrasena.length >= 20) {
-      await this.helper.showAlert("Las contraseñas superan el máximo de carácteres(19)", "Error", "No Registrado");
-      return;
-    }
-
-    // Validar contraseñas iguales
-    if (this.contrasena != this.contrasena2) {
-      await this.helper.showAlert("Las contraseñas no coinciden", "Error", "No Registrado");
-      return;
-    }
-
-    // Validar region
-    if (this.regionSel == 0) {
-      await this.helper.showAlert("La región es obligatoria", "Error", "No Registrado");
-      return;
-    }
-
-    // Validar comuna
-    if (this.comunaSel == 0) {
-      await this.helper.showAlert("La comuna es obligatoria", "Error", "No Registrado");
-      return;
-    }
-
     try {
     const req = await this.auth.createUserWithEmailAndPassword( this.email, this.contrasena );
 
@@ -151,6 +153,7 @@ export class RegisterPage implements OnInit {
     await this.helper.showAlert("Usuario registrado correctamente","Información","Registrado");
 
     } catch (error:any) {
+
       if (error.code == 'auth/email-already-in-use') {
         // await loader.dismiss();
         await this.helper.showAlert("El correo ya se encuentra registrado.","Error","No Registrado");
