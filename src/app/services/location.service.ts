@@ -21,5 +21,4 @@ export class LocationService {
     return await lastValueFrom(this.http.get<ApiResponse<Comuna>>(`${environment.apiUrl}comuna/` + idRegion));
   }
 
-  
 }
