@@ -1,3 +1,26 @@
 ion-icon {
   font-size: 25px;
 }
+
+ion-content{
+  --background: var(--ion-color-azul4);
+}
+
+ion-toolbar{
+  --background: var(--ion-color-azul2);
+}
+
+ion-button{
+  display: flex;
+  flex-direction: row;
+}
+
+ion-card{
+  margin-top: 100px;
+  background: var(--ion-color-azul3);
+}
+
+ion-button{
+  display: flex;
+  flex-direction: row;
+}

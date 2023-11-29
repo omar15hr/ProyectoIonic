@@ -14,6 +14,7 @@ export class DispositivoPage implements OnInit {
   deviceID:any;
   languageLocaleCode:any;
   languageTag:any;
+  batteryLevel:any;
 
   constructor(private auth:AngularFireAuth,) { }
 
@@ -26,7 +27,9 @@ export class DispositivoPage implements OnInit {
     this.info = await Device.getInfo();
     this.deviceID = await Device.getId();
     this.batteryInfo = await Device.getBatteryInfo();
+    this.batteryLevel = this.batteryInfo.batteryLevel * 100;
     this.languageLocaleCode = await Device.getLanguageCode();
     this.languageTag = await Device.getLanguageTag();
+
   }
 }

@@ -1,6 +1,5 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-icon (click)="close()" slot="end" name="close-outline" class="ion-padding"></ion-icon>
     <ion-title>Confirmar Qr</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -8,17 +7,24 @@
 <ion-content [fullscreen]="true">
     <ion-toolbar>
       <ion-card *ngFor="let i of dataQr">
-        <h3>{{i.asignatura}}</h3>
-        <h3>{{i.docente}}</h3>
-        <h3>{{i.fecha}}</h3>
-        <h3>{{i.hora}}</h3>
-        <h3>{{i.leccion}}</h3>
-        <h3>{{i.sala}}</h3>
-        <h3>{{i.seccion}}</h3>
+        <h3>Asignatura: {{i.leccion}}</h3>
+        <h3>Codigo Asignatura: {{i.asignatura}}</h3>
+        <h3>Docente: {{i.docente}}</h3>
+        <h3>Fecha: {{i.fecha}}</h3>
+        <h3>Hora: {{i.hora}}</h3>
+        <h3>Sala: {{i.sala}}</h3>
+        <h3>Seccion: {{i.seccion}}</h3>
       </ion-card>
 
-      <ion-button (click)="confirmar()" expand="block" fill="clear" shape="round">
-        Confirmar
-      </ion-button>
+      <ion-row class="ion-justify-content-center">
+        <ion-button (click)="confirmar()" expand="block" fill="clear" shape="round">
+          Confirmar
+        </ion-button>
+  
+        <ion-button (click)="close()" expand="block" fill="clear" shape="round">
+          Cancelar
+        </ion-button>
+      </ion-row>
+      
     </ion-toolbar>
 </ion-content>
