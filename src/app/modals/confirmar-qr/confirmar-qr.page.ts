@@ -21,7 +21,7 @@ export class ConfirmarQrPage implements OnInit {
     private modalController: ModalController,
     private storage:StorageService,
     private helper:HelperService,
-    private auth: AngularFireAuth
+    private auth: AngularFireAuth,
     ) { }
 
   ngOnInit() {
@@ -29,8 +29,9 @@ export class ConfirmarQrPage implements OnInit {
   }
 
   async confirmar() {
+    const actualUser = await this.auth.currentUser;
     this.objetoAsistencia = this.dataQr.shift()
-    this.idAsistencia = this.objetoAsistencia.asignatura + this.objetoAsistencia.fecha + this.objetoAsistencia.seccion
+    this.idAsistencia = this.objetoAsistencia.asignatura + this.objetoAsistencia.fecha + this.objetoAsistencia.seccion + actualUser?.email
 
     console.log(this.objetoAsistencia.asignatura);
     
